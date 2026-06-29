@@ -13,13 +13,20 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const scrollTo = (id) => (e) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#products', label: 'Products' },
-    { href: '#solutions', label: 'Solutions' },
-    { href: '#process', label: 'Process' },
-    { href: '#quality', label: 'Quality' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#about', id: 'about', label: 'About' },
+    { href: '#products', id: 'products', label: 'Products' },
+    { href: '#solutions', id: 'solutions', label: 'Solutions' },
+    { href: '#process', id: 'process', label: 'Process' },
+    { href: '#quality', id: 'quality', label: 'Quality' },
+    { href: '#contact', id: 'contact', label: 'Contact' },
   ];
 
   return (
@@ -49,7 +56,7 @@ export default function Navbar() {
             justifyContent: 'space-between',
           }}
         >
-          <a href="#home" className="brand" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <a href="#home" className="brand" onClick={scrollTo('home')} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div
               style={{
                 width: 42,
@@ -110,6 +117,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className="nav-link"
+                onClick={scrollTo(link.id)}
                 style={{
                   fontSize: 13.5,
                   fontWeight: 500,
@@ -141,6 +149,7 @@ export default function Navbar() {
             <a
               href="#contact"
               className="btn btn-gold btn-sm"
+              onClick={scrollTo('contact')}
               data-ripple
               style={{
                 display: 'inline-flex',
@@ -221,7 +230,7 @@ export default function Navbar() {
               href={link.href}
               className="m-link"
               style={{ color: '#fff', fontSize: 20, fontFamily: "'Space Grotesk',sans-serif" }}
-              onClick={() => setMobileOpen(false)}
+              onClick={scrollTo(link.id)}
             >
               {link.label}
             </a>

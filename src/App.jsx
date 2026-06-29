@@ -258,6 +258,7 @@ export default function App() {
         <Route path="/" element={<MainSite />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminApp />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </HashRouter>
   );
