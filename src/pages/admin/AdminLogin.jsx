@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 
 export default function AdminLogin() {
@@ -7,9 +8,10 @@ export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   if (isAuthenticated) {
-    window.location.href = '/admin';
+    navigate('/admin', { replace: true });
     return null;
   }
 
@@ -24,7 +26,7 @@ export default function AdminLogin() {
     if (!success) {
       setError('Invalid credentials. Try admin@yousafzaigroup.com / Admin@2025');
     } else {
-      window.location.href = '/admin';
+      navigate('/admin', { replace: true });
     }
   };
 

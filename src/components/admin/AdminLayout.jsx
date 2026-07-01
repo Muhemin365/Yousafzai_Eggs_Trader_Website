@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 import { useCMSStore } from '../../store/useCMSStore';
 
@@ -21,6 +22,7 @@ export default function AdminLayout({ activeSection, setActiveSection, children 
   const logout = useAuthStore((s) => s.logout);
   const user = useAuthStore((s) => s.user);
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#F5F7FA' }}>
@@ -63,7 +65,7 @@ export default function AdminLayout({ activeSection, setActiveSection, children 
             </div>
           )}
           <button
-            onClick={() => { logout(); window.location.href = '/admin-login'; }}
+            onClick={() => { logout(); navigate('/admin/login', { replace: true }); }}
             style={{ width: '100%', padding: '8px 0', background: 'rgba(255,255,255,0.06)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, fontSize: 12, cursor: 'pointer' }}
           >
             {collapsed ? 'L' : 'Logout'}

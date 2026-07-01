@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { FileText, Package, Clock, CheckCircle2 } from 'lucide-react';
 import { useAuthStore } from './store/useAuthStore';
 import Navbar from './components/Navbar';
@@ -153,7 +153,7 @@ function AdminApp() {
   const whyUs = useCMSStore((s) => s.whyUs);
   const updateWhyUs = useCMSStore((s) => s.updateWhyUs);
 
-  if (!isAuthenticated) return <Navigate to="/admin-login" />;
+  if (!isAuthenticated) return <Navigate to="/admin/login" />;
 
   const renderEditor = () => {
     switch (section) {
@@ -302,13 +302,13 @@ const inputStyle = {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainSite />} />
-        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminApp />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
