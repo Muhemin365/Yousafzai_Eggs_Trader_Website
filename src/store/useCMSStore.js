@@ -1,6 +1,29 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { defaultContent } from '../data/defaultContent';
+
+function deepMerge(defaults, persisted) {
+  if (!persisted) return defaults;
+  const result = { ...defaults };
+  for (const key of Object.keys(persisted)) {
+    if (key.startsWith('update')) continue;
+    const dv = defaults[key];
+    const pv = persisted[key];
+    if (Array.isArray(dv) && Array.isArray(pv)) {
+      result[key] = pv.map((item, i) => {
+        if (i < dv.length && typeof item === 'object' && typeof dv[i] === 'object') {
+          return { ...dv[i], ...item };
+        }
+        return item;
+      });
+    } else if (typeof dv === 'object' && typeof pv === 'object' && dv !== null && pv !== null) {
+      result[key] = { ...dv, ...pv };
+    } else {
+      result[key] = pv;
+    }
+  }
+  return result;
+}
 
 export const useCMSStore = create(
   persist(
@@ -24,6 +47,10 @@ export const useCMSStore = create(
       updateProductItems: (items) => set((s) => ({ products: { ...s.products, items } })),
       updateProductSpecs: (specs) => set((s) => ({ products: { ...s.products, specs } })),
     }),
-    { name: 'yousafzai-cms' }
+    {
+      name: 'yousafzai-cms',
+      storage: createJSONStorage(() => localStorage),
+      merge: (persisted, current) => deepMerge(current, persisted),
+    }
   )
 );

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useCMSStore } from '../store/useCMSStore';
 
 export default function ProductsSection() {
   const products = useCMSStore((s) => s.products);
+  const [brokenImgs, setBrokenImgs] = useState(new Set());
   const ref = useRef(null);
 
   useEffect(() => {
@@ -36,9 +37,9 @@ export default function ProductsSection() {
             <div key={i} className="product-card">
                <div className="product-top" style={{ background: `linear-gradient(145deg,${item.gradient.includes('from-navy') ? '#0B2545,#123A6B' : item.gradient.includes('from-amber') ? '#4F3A22,#7A5A33' : item.gradient.includes('from-green') ? '#1F5E3A,#2F7D4E' : '#3A3A52,#52527A'}` }}>
                  <span className="p-badge">{item.badge}</span>
-                 {item.image ? (
-                   <img src={item.image} alt={item.name} className="p-image" />
-                 ) : (
+                {item.image && !brokenImgs.has(i) ? (
+                    <img src={item.image} alt={item.name} className="p-image" onError={() => setBrokenImgs((prev) => new Set(prev).add(i))} />
+                  ) : (
                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" width="46" height="46">
                      {item.icon === 'Feather' ? <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" /> :
                       <><rect x="4" y="8" width="16" height="11" rx="1.5" /><path d="M8 8V6a4 4 0 018 0v2" /></>}
