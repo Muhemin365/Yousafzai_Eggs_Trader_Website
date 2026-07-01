@@ -19,6 +19,8 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminLayout from './components/admin/AdminLayout';
 import HeroEditor from './components/admin/HeroEditor';
 import TextEditor from './components/admin/TextEditor';
+import ProductItemsEditor from './components/admin/ProductItemsEditor';
+import SpecsEditor from './components/admin/SpecsEditor';
 import { useCMSStore } from './store/useCMSStore';
 
 function MainSite() {
@@ -132,6 +134,8 @@ function AdminApp() {
   const updateAbout = useCMSStore((s) => s.updateAbout);
   const products = useCMSStore((s) => s.products);
   const updateProducts = useCMSStore((s) => s.updateProducts);
+  const updateProductItems = useCMSStore((s) => s.updateProductItems);
+  const updateProductSpecs = useCMSStore((s) => s.updateProductSpecs);
   const quality = useCMSStore((s) => s.quality);
   const updateQuality = useCMSStore((s) => s.updateQuality);
   const contact = useCMSStore((s) => s.contact);
@@ -142,6 +146,12 @@ function AdminApp() {
   const updateTestimonials = useCMSStore((s) => s.updateTestimonials);
   const faq = useCMSStore((s) => s.faq);
   const updateFaq = useCMSStore((s) => s.updateFaq);
+  const solutions = useCMSStore((s) => s.solutions);
+  const updateSolutions = useCMSStore((s) => s.updateSolutions);
+  const supplyChain = useCMSStore((s) => s.supplyChain);
+  const updateSupplyChain = useCMSStore((s) => s.updateSupplyChain);
+  const whyUs = useCMSStore((s) => s.whyUs);
+  const updateWhyUs = useCMSStore((s) => s.updateWhyUs);
 
   if (!isAuthenticated) return <Navigate to="/admin-login" />;
 
@@ -163,15 +173,22 @@ function AdminApp() {
         />
       );
       case 'products': return (
-        <TextEditor
-          data={products}
-          onUpdate={updateProducts}
-          fields={[
-            { key: 'eyebrow', label: 'Eyebrow' },
-            { key: 'title', label: 'Title' },
-            { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
-          ]}
-        />
+        <div>
+          <TextEditor
+            data={products}
+            onUpdate={updateProducts}
+            fields={[
+              { key: 'eyebrow', label: 'Eyebrow' },
+              { key: 'title', label: 'Title' },
+              { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
+            ]}
+          />
+          <div style={{ marginTop: 28, paddingTop: 24, borderTop: '1.5px solid #EEF1F5' }}>
+            <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px' }}>Product Items</h3>
+            <ProductItemsEditor items={products.items} onUpdate={updateProductItems} />
+          </div>
+          <SpecsEditor specs={products.specs} onUpdate={updateProductSpecs} />
+        </div>
       );
       case 'quality': return (
         <TextEditor
@@ -203,6 +220,38 @@ function AdminApp() {
             { key: 'name', label: 'Company Name' },
             { key: 'sub', label: 'Sub Label' },
             { key: 'tagline', label: 'Tagline', type: 'textarea', rows: 2 },
+          ]}
+        />
+      );
+      case 'solutions': return (
+        <TextEditor
+          data={solutions}
+          onUpdate={updateSolutions}
+          fields={[
+            { key: 'eyebrow', label: 'Eyebrow' },
+            { key: 'title', label: 'Title' },
+            { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
+          ]}
+        />
+      );
+      case 'supplyChain': return (
+        <TextEditor
+          data={supplyChain}
+          onUpdate={updateSupplyChain}
+          fields={[
+            { key: 'eyebrow', label: 'Eyebrow' },
+            { key: 'title', label: 'Title' },
+            { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
+          ]}
+        />
+      );
+      case 'whyUs': return (
+        <TextEditor
+          data={whyUs}
+          onUpdate={updateWhyUs}
+          fields={[
+            { key: 'eyebrow', label: 'Eyebrow' },
+            { key: 'title', label: 'Title' },
           ]}
         />
       );

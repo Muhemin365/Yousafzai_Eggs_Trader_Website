@@ -34,13 +34,17 @@ export default function ProductsSection() {
         <div className="product-grid reveal-stagger">
           {products.items.map((item, i) => (
             <div key={i} className="product-card">
-              <div className="product-top" style={{ background: `linear-gradient(145deg,${item.gradient.includes('from-navy') ? '#0B2545,#123A6B' : item.gradient.includes('from-amber') ? '#4F3A22,#7A5A33' : item.gradient.includes('from-green') ? '#1F5E3A,#2F7D4E' : '#3A3A52,#52527A'}` }}>
-                <span className="p-badge">{item.badge}</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" width="46" height="46">
-                  {item.icon === 'Feather' ? <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" /> :
-                   <><rect x="4" y="8" width="16" height="11" rx="1.5" /><path d="M8 8V6a4 4 0 018 0v2" /></>}
-                </svg>
-              </div>
+               <div className="product-top" style={{ background: `linear-gradient(145deg,${item.gradient.includes('from-navy') ? '#0B2545,#123A6B' : item.gradient.includes('from-amber') ? '#4F3A22,#7A5A33' : item.gradient.includes('from-green') ? '#1F5E3A,#2F7D4E' : '#3A3A52,#52527A'}` }}>
+                 <span className="p-badge">{item.badge}</span>
+                 {item.image ? (
+                   <img src={item.image} alt={item.name} className="p-image" />
+                 ) : (
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" width="46" height="46">
+                     {item.icon === 'Feather' ? <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" /> :
+                      <><rect x="4" y="8" width="16" height="11" rx="1.5" /><path d="M8 8V6a4 4 0 018 0v2" /></>}
+                   </svg>
+                 )}
+               </div>
               <div className="product-body">
                 <div className="p-name">{item.name}</div>
                 <div className="p-desc">{item.description}</div>
@@ -87,7 +91,8 @@ export default function ProductsSection() {
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(11,37,69,0.10); }
         .product-top { height: 128px; display: flex; align-items: center; justify-content: center; position: relative; }
         .product-top svg { width: 46px; height: 46px; color: #F1E4C3; }
-        .product-top .p-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; letter-spacing: .04em; background: rgba(255,255,255,0.16); color: #FFFFFF; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+        .product-top .p-image { width: 100%; height: 100%; object-fit: cover; }
+        .product-top .p-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; letter-spacing: .04em; background: rgba(255,255,255,0.16); color: #FFFFFF; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; z-index: 1; }
         .product-body { padding: 22px 20px; }
         .p-name { font-weight: 700; font-size: 14.5px; color: #0B2545; margin-bottom: 8px; }
         .p-desc { font-size: 12.5px; color: #707888; line-height: 1.6; margin-bottom: 14px; min-height: 62px; }

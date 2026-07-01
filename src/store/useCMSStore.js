@@ -21,6 +21,8 @@ export const useCMSStore = create(
       updateFaq: (faq) => set({ faq }),
       updateTeam: (team) => set((s) => ({ about: { ...s.about, team } })),
       updateCertifications: (certs) => set((s) => ({ quality: { ...s.quality, certs } })),
+      updateProductItems: (items) => set((s) => ({ products: { ...s.products, items } })),
+      updateProductSpecs: (specs) => set((s) => ({ products: { ...s.products, specs } })),
     }),
     { name: 'yousafzai-cms' }
   )
