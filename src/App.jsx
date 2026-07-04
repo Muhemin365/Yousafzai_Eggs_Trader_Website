@@ -26,6 +26,11 @@ import { useCMSStore } from './store/useCMSStore';
 function MainSite() {
   const [loading, setLoading] = useState(true);
   const [showBackTop, setShowBackTop] = useState(false);
+  const initFromApi = useCMSStore((s) => s.initFromApi);
+
+  useEffect(() => {
+    initFromApi();
+  }, [initFromApi]);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);

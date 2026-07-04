@@ -1,10 +1,45 @@
-import { useEffect, useRef } from 'react';
-import { Clock } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Clock, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useCMSStore } from '../store/useCMSStore';
+import { api } from '../lib/api';
 
 export default function ContactSection() {
   const contact = useCMSStore((s) => s.contact);
   const ref = useRef(null);
+  const [form, setForm] = useState({
+    companyName: '', industry: 'Hotel / Restaurant / Café',
+    contactName: '', jobTitle: '', email: '', phone: '',
+    productType: 'Commercial Grade A White', weeklyVolume: 'Under 50',
+    deliveryLocation: '', notes: '',
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
+
+  const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitResult(null);
+    if (!form.companyName || !form.contactName || !form.email || !form.phone || !form.deliveryLocation) {
+      setSubmitResult({ ok: false, msg: 'Please fill in all required fields.' });
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await api.submitQuote(form);
+      setSubmitResult({ ok: true, msg: res.message || 'Quote request submitted successfully!' });
+      setForm({
+        companyName: '', industry: 'Hotel / Restaurant / Café',
+        contactName: '', jobTitle: '', email: '', phone: '',
+        productType: 'Commercial Grade A White', weeklyVolume: 'Under 50',
+        deliveryLocation: '', notes: '',
+      });
+    } catch (err) {
+      setSubmitResult({ ok: false, msg: err.message || 'Failed to submit. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const el = ref.current;
@@ -56,76 +91,84 @@ export default function ContactSection() {
             ))}
           </div>
           <div className="form-card reveal">
-            <div className="form-row">
-              <div className="f-group">
-                <label className="f-label">Company Name *</label>
-                <input className="f-input" type="text" placeholder="Your company name" />
+            <form onSubmit={handleSubmit}>
+              {submitResult && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 9, fontSize: 13, marginBottom: 16, background: submitResult.ok ? '#F0FDF4' : '#FEF2F2', color: submitResult.ok ? '#166534' : '#B91C1C' }}>
+                  {submitResult.ok ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
+                  {submitResult.msg}
+                </div>
+              )}
+              <div className="form-row">
+                <div className="f-group">
+                  <label className="f-label">Company Name *</label>
+                  <input className="f-input" type="text" placeholder="Your company name" value={form.companyName} onChange={set('companyName')} disabled={submitting} />
+                </div>
+                <div className="f-group">
+                  <label className="f-label">Industry *</label>
+                  <select className="f-input" value={form.industry} onChange={set('industry')} disabled={submitting}>
+                    <option>Hotel / Restaurant / Café</option>
+                    <option>Bakery / Confectionery</option>
+                    <option>Retail / Supermarket</option>
+                    <option>Food Manufacturer</option>
+                    <option>Hospital / Institution</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="f-group">
+                  <label className="f-label">Contact Name *</label>
+                  <input className="f-input" type="text" placeholder="Full name" value={form.contactName} onChange={set('contactName')} disabled={submitting} />
+                </div>
+                <div className="f-group">
+                  <label className="f-label">Job Title</label>
+                  <input className="f-input" type="text" placeholder="e.g. Procurement Manager" value={form.jobTitle} onChange={set('jobTitle')} disabled={submitting} />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="f-group">
+                  <label className="f-label">Email *</label>
+                  <input className="f-input" type="email" placeholder="you@company.com" value={form.email} onChange={set('email')} disabled={submitting} />
+                </div>
+                <div className="f-group">
+                  <label className="f-label">Phone *</label>
+                  <input className="f-input" type="tel" placeholder="+92 XXX XXXXXXX" value={form.phone} onChange={set('phone')} disabled={submitting} />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="f-group">
+                  <label className="f-label">Product Type *</label>
+                  <select className="f-input" value={form.productType} onChange={set('productType')} disabled={submitting}>
+                    <option>Commercial Grade A White</option>
+                    <option>Free-Range Brown</option>
+                    <option>Certified Organic</option>
+                    <option>Processing Grade</option>
+                    <option>Mixed / Multiple</option>
+                  </select>
+                </div>
+                <div className="f-group">
+                  <label className="f-label">Weekly Volume (trays) *</label>
+                  <select className="f-input" value={form.weeklyVolume} onChange={set('weeklyVolume')} disabled={submitting}>
+                    <option>Under 50</option>
+                    <option>50–199</option>
+                    <option>200–499</option>
+                    <option>500–1,999</option>
+                    <option>2,000+</option>
+                  </select>
+                </div>
               </div>
               <div className="f-group">
-                <label className="f-label">Industry *</label>
-                <select className="f-input">
-                  <option>Hotel / Restaurant / Café</option>
-                  <option>Bakery / Confectionery</option>
-                  <option>Retail / Supermarket</option>
-                  <option>Food Manufacturer</option>
-                  <option>Hospital / Institution</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="f-group">
-                <label className="f-label">Contact Name *</label>
-                <input className="f-input" type="text" placeholder="Full name" />
+                <label className="f-label">Delivery Location *</label>
+                <input className="f-input" type="text" placeholder="City / address for delivery" value={form.deliveryLocation} onChange={set('deliveryLocation')} disabled={submitting} />
               </div>
               <div className="f-group">
-                <label className="f-label">Job Title</label>
-                <input className="f-input" type="text" placeholder="e.g. Procurement Manager" />
+                <label className="f-label">Additional Notes</label>
+                <textarea className="f-input" placeholder="Special requirements, certifications needed, start date, etc." value={form.notes} onChange={set('notes')} disabled={submitting} />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="f-group">
-                <label className="f-label">Email *</label>
-                <input className="f-input" type="email" placeholder="you@company.com" />
-              </div>
-              <div className="f-group">
-                <label className="f-label">Phone *</label>
-                <input className="f-input" type="tel" placeholder="+92 XXX XXXXXXX" />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="f-group">
-                <label className="f-label">Product Type *</label>
-                <select className="f-input">
-                  <option>Commercial Grade A White</option>
-                  <option>Free-Range Brown</option>
-                  <option>Certified Organic</option>
-                  <option>Processing Grade</option>
-                  <option>Mixed / Multiple</option>
-                </select>
-              </div>
-              <div className="f-group">
-                <label className="f-label">Weekly Volume (trays) *</label>
-                <select className="f-input">
-                  <option>Under 50</option>
-                  <option>50–199</option>
-                  <option>200–499</option>
-                  <option>500–1,999</option>
-                  <option>2,000+</option>
-                </select>
-              </div>
-            </div>
-            <div className="f-group">
-              <label className="f-label">Delivery Location *</label>
-              <input className="f-input" type="text" placeholder="City / address for delivery" />
-            </div>
-            <div className="f-group">
-              <label className="f-label">Additional Notes</label>
-              <textarea className="f-input" placeholder="Special requirements, certifications needed, start date, etc." />
-            </div>
-            <button className="btn btn-navy btn-block" data-ripple type="button">
-              <span>Submit Quote Request →</span>
-            </button>
+              <button className="btn btn-navy btn-block" data-ripple type="submit" disabled={submitting} style={{ opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}>
+                <span>{submitting ? 'Submitting...' : 'Submit Quote Request →'}</span>
+              </button>
+            </form>
             <div className="form-note"><Clock size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 4 }} /> You'll receive a formal quotation within 4 business hours. No commitment required.</div>
           </div>
         </div>
