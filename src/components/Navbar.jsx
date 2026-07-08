@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useCMSStore } from '../store/useCMSStore';
+import logo from '../assets/logo.svg';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,12 +22,12 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { href: '#about', id: 'about', label: 'About' },
+    { href: '#about', id: 'about', label: 'About Us' },
     { href: '#products', id: 'products', label: 'Products' },
     { href: '#solutions', id: 'solutions', label: 'Solutions' },
     { href: '#process', id: 'process', label: 'Process' },
     { href: '#quality', id: 'quality', label: 'Quality' },
-    { href: '#contact', id: 'contact', label: 'Contact' },
+    { href: '#contact', id: 'contact', label: 'Contact Us' },
   ];
 
   return (
@@ -57,23 +58,15 @@ export default function Navbar() {
           }}
         >
           <a href="#home" className="brand" onClick={scrollTo('home')} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div
+            <img
+              src={logo}
+              alt="Yousafzai EGRO"
               style={{
-                width: 42,
                 height: 42,
-                borderRadius: 11,
-                background: 'linear-gradient(145deg,#0B2545,#123A6B)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                width: 'auto',
                 flexShrink: 0,
-                boxShadow: '0 6px 16px rgba(11,37,69,0.28)',
               }}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="#F1E4C3" strokeWidth="1.6" width="22" height="22">
-                <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" />
-              </svg>
-            </div>
+            />
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span
                 className="brand-name"

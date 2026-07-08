@@ -192,13 +192,13 @@ Each section is a resource. The frontend expects these exact shapes:
 ### GET/PUT /api/cms/contact
 ```json
 {
-  "eyebrow": "Contact",
+  "eyebrow": "Contact Us",
   "title": "B2B Egg Supply — Custom Pricing in 4 Hours",
   "subtitle": "...",
   "info": [
     { "icon": "Phone", "label": "Phone", "value": "+92 XXX XXXXXXX" },
     { "icon": "Mail", "label": "Email", "value": "b2b@yousafzaiegro.com" },
-    { "icon": "MapPin", "label": "Headquarters", "value": "Peshawar, KPK, Pakistan" },
+    { "icon": "MapPin", "label": "Headquarters", "value": "Peshawar, Khyber Pakhtunkhwa, Pakistan" },
     { "icon": "Clock", "label": "Response Time", "value": "Formal quotation within 4 business hours" }
   ]
 }

@@ -1,7 +1,7 @@
 export const defaultContent = {
   hero: {
     eyebrow: 'International B2B Egg Trading & Supply',
-    h1Line1: 'Trusted Egg Traders,',
+    h1Line1: 'Trusted Egg Traders',
     h1Highlight: 'Global Standards',
     h1Line2: 'Built for',
     body: 'Yousafzai EGRO is Pakistan\'s compliance-first egg trading and supply house — connecting certified farms to hotels, retailers, manufacturers and institutions across the region, with full traceability on every batch.',
@@ -49,7 +49,7 @@ export const defaultContent = {
   overview: {
     rows: [
       { label: 'Company Name', value: 'Yousafzai EGRO (Pvt.) Ltd. — Egg Traders' },
-      { label: 'Established', value: '2010, Peshawar, KPK' },
+      { label: 'Established', value: '2010, Peshawar, Khyber Pakhtunkhwa' },
       { label: 'Business Type', value: 'B2B Egg Trading, Supply & Distribution' },
       { label: 'Trading Volume', value: '500,000+ eggs / week' },
       { label: 'Active Partners & Clients', value: '280+ businesses' },
@@ -91,7 +91,7 @@ export const defaultContent = {
     title: 'A Fully Integrated, Cold-Chain-Managed Flow',
     subtitle: 'From farm gate to your delivery dock — every stage is monitored, documented and quality-checked.',
     steps: [
-      { icon: 'Feather', title: 'Farm Sourcing', desc: 'Vetted partner farms across KPK, Punjab and Sindh' },
+      { icon: 'Feather', title: 'Farm Sourcing', desc: 'Vetted partner farms across Khyber Pakhtunkhwa, Punjab, and Sindh' },
       { icon: 'FlaskConical', title: 'Quality Check', desc: 'Lab testing, candling, and grading at collection point' },
       { icon: 'Snowflake', title: 'Cold Storage', desc: '2–5°C controlled storage across 3 regional hubs' },
       { icon: 'Package', title: 'Packing', desc: 'Partner-branded or standard packaging applied' },
@@ -99,7 +99,7 @@ export const defaultContent = {
     ],
     features: [
       { icon: 'Sun', title: 'Cold Chain Management', body: 'Continuous 2–5°C temperature monitoring from collection to delivery, with IoT loggers and real-time GPS on every vehicle.' },
-      { icon: 'Home', title: 'Regional Distribution Hubs', body: 'Three hubs in Lahore, Karachi and Peshawar ensure next-day delivery to 25+ cities at a 98% success rate.' },
+      { icon: 'Home', title: 'Regional Distribution Hubs', body: 'Three hubs in Lahore, Karachi, and Peshawar ensure next-day delivery to 25+ cities at a 98% success rate.' },
       { icon: 'Share2', title: 'Farm Network', body: '40+ vetted farm partners across Pakistan, audited annually for animal welfare, hygiene, and environmental compliance.' },
     ],
   },
@@ -109,7 +109,7 @@ export const defaultContent = {
     subtitle: 'A cold-chain fleet and regional hub network designed to move volume reliably — with B2B quoting fast enough to keep pace with your demand.',
     features: [
       { icon: 'Truck', title: '35-Vehicle Cold-Chain Fleet', body: 'A dedicated refrigerated fleet running fixed and on-demand routes across our full delivery footprint.' },
-      { icon: 'Globe2', title: '25+ Cities Covered', body: 'Distribution from Lahore, Karachi and Peshawar hubs reaches every major commercial centre in the region.' },
+      { icon: 'Globe2', title: '25+ Cities Covered', body: 'Distribution from Lahore, Karachi, and Peshawar hubs reaches every major commercial center in the region.' },
       { icon: 'CheckCircle2', title: '4-Hour B2B Quoting', body: 'Submit a quote request and receive a formal proposal within 4 business hours, with contracts active in 3 working days.' },
     ],
   },
@@ -119,9 +119,9 @@ export const defaultContent = {
     reasons: [
       { num: '01', title: 'Managed Supply Chain', body: 'End-to-end logistics from farm gate to delivery dock — sourcing, quality checks, cold chain, and last-mile delivery all handled for you.' },
       { num: '02', title: 'Full Documentation, Every Time', body: 'Every delivery comes with batch certificates, lab results, temperature logs, and chain-of-custody paperwork ready for your auditors.' },
-      { num: '03', title: 'Batch-Level Traceability', body: 'Scan any box to trace the egg back to the specific farm, hen flock, collection date and processing time — in real time.' },
+      { num: '03', title: 'Batch-Level Traceability', body: 'Scan any box to trace the eggs back to the specific farm, hen flock, collection date, and processing time — in real time.' },
       { num: '04', title: 'Partner Program & Market Intelligence', body: 'A three-tier partner framework with volume pricing, dedicated support, and weekly price and supply forecasts.' },
-      { num: '05', title: 'ESG-Aligned Trading', body: 'Practices audited annually for environmental impact, fair labour, and ethical governance — a 92/100 third-party ESG score.' },
+      { num: '05', title: 'ESG-Aligned Trading', body: 'Practices audited annually for environmental impact, fair labor, and ethical governance — a 92/100 third-party ESG score.' },
       { num: '06', title: 'Compliance Assured', body: 'All products meet PSQCA, Halal, and ISO 22000 standards, so your procurement team doesn\'t have to chase paperwork.' },
     ],
   },
@@ -142,7 +142,7 @@ export const defaultContent = {
   ],
   process: [
     { num: '01', icon: 'Feather', title: 'Collection', body: 'Eggs collected from certified farms within 6 hours of laying. Each collection logged with farm ID, flock ID and timestamp.' },
-    { num: '02', icon: 'FlaskConical', title: 'Laboratory Testing', body: 'Salmonella swabs, shell strength, interior quality (Haugh units) and yolk colour measured on every batch.' },
+    { num: '02', icon: 'FlaskConical', title: 'Laboratory Testing', body: 'Salmonella swabs, shell strength, interior quality (Haugh units), and yolk color measured on every batch.' },
     { num: '03', icon: 'ScanLine', title: 'Candling & Grading', body: 'Automated candling detects cracks, blood spots and internal defects. Eggs are graded by size and shell quality.' },
     { num: '04', icon: 'Printer', title: 'Marking & Coding', body: 'Each egg is stamped with a batch code linking to the full digital audit trail accessible via our client portal.' },
     { num: '05', icon: 'Package', title: 'Packing', body: 'Packed under hygienic conditions in client-specified or standard packaging, with batch certs included in every box.' },
@@ -184,10 +184,10 @@ export const defaultContent = {
     { q: 'Which certifications and standards do you comply with?', a: 'All products meet ISO 22000:2018, PSQCA, and PNAC-accredited Halal standards, alongside active Animal Welfare, Environmental Audit, and HACCP certifications.' },
     { q: 'Can I trace a specific delivered batch?', a: 'Yes. Every box carries a batch code — scan it or look it up in the client portal to see farm collection, lab testing, grading, dispatch and delivery timestamps.' },
     { q: 'How does the Partner Program pricing work?', a: 'Pricing is tiered by weekly volume — Silver (100–499 trays), Gold (500–1,999 trays), and Platinum (2,000+ trays) — each unlocking deeper discounts and additional services.' },
-    { q: 'Which cities and regions do you deliver to?', a: 'Our distribution hubs in Lahore, Karachi and Peshawar serve 25+ cities directly, with next-day delivery at a 98% success rate.' },
+    { q: 'Which cities and regions do you deliver to?', a: 'Our distribution hubs in Lahore, Karachi, and Peshawar serve 25+ cities directly, with next-day delivery at a 98% success rate.' },
   ],
   contact: {
-    eyebrow: 'Contact',
+    eyebrow: 'Contact Us',
     title: 'B2B Egg Supply — Custom Pricing in 4 Hours',
     subtitle: 'Fill in the form below. Our commercial team will respond with a formal quotation within 4 business hours.',
     info: [
@@ -221,7 +221,7 @@ export const defaultContent = {
       { label: 'Our Process', href: '#process' },
       { label: 'Quality Assurance', href: '#quality' },
       { label: 'FAQ', href: '#faq' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Contact Us', href: '#contact' },
     ],
   },
 };
