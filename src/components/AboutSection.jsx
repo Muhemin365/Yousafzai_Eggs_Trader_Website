@@ -139,7 +139,8 @@ export default function AboutSection() {
         .reveal-stagger.in > *:nth-child(6) { transition-delay: .40s; }
         @media (max-width: 1080px) {
           .team-grid { grid-template-columns: repeat(2,1fr); }
-          .team-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; }
+          .team-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; text-align: center; }
+          .team-card:nth-child(3) .team-avatar { margin: 0 auto 18px; }
         }
         @media (max-width: 860px) {
           .about-grid { grid-template-columns: 1fr; }
