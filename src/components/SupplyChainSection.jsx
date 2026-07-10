@@ -144,7 +144,13 @@ export default function SupplyChainSection() {
           .feature-card:nth-child(3) .f-icon { margin-left: auto; margin-right: auto; }
           .feature-card:nth-child(4) { grid-column: 1 / -1; }
         }
-        @media (max-width: 860px) { .flow-wrap { flex-direction: column; gap: 30px; } .flow-line { display: none; } .feature-card:nth-child(3) { width: 100%; } }
+        @media (max-width: 860px) { .flow-wrap { flex-direction: column; gap: 30px; } .flow-line { display: none; } }
+        @media (max-width: 640px) {
+          .card-grid { grid-template-columns: 1fr; gap: 16px; }
+          .feature-card { padding: 24px 20px; }
+          .feature-card:nth-child(3) { width: 100%; justify-self: stretch; }
+          .feature-card:nth-child(4) { grid-column: auto; }
+        }
       `}</style>
     </div>
   );
