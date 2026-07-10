@@ -139,14 +139,16 @@ export default function SupplyChainSection() {
         .f-title { font-weight: 700; font-size: 15px; color: #0B2545; }
         .f-body { font-size: 13px; color: #707888; line-height: 1.6; margin-top: 12px; }
         @media (max-width: 1080px) {
-          .card-grid { grid-template-columns: repeat(2,1fr); }
+          .card-grid,
+          .card-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
           .feature-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; text-align: center; }
           .feature-card:nth-child(3) .f-icon { margin-left: auto; margin-right: auto; }
           .feature-card:nth-child(4) { grid-column: 1 / -1; }
         }
         @media (max-width: 860px) {
           .flow-wrap { flex-direction: column; gap: 30px; } .flow-line { display: none; }
-          .card-grid { grid-template-columns: 1fr; gap: 16px; }
+          .card-grid,
+          .card-grid.cols-3 { grid-template-columns: 1fr; gap: 16px; }
           .feature-card { padding: 24px 20px; }
         }
       `}</style>
