@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function CTASection() {
   const ref = useRef(null);
@@ -30,8 +31,8 @@ export default function CTASection() {
             <div className="cta-sub">Get a formal B2B quotation in 4 business hours, or speak with our partnerships team about the right tier for your business.</div>
           </div>
           <div className="cta-actions">
-            <a href="#contact" className="btn btn-gold" data-ripple><span>Request a Quote</span></a>
-            <a href="#contact" className="btn btn-outline" data-ripple><span>Talk to Us</span></a>
+            <Link to="/contact" className="btn btn-gold" data-ripple><span>Request a Quote</span></Link>
+            <Link to="/contact" className="btn btn-outline" data-ripple><span>Talk to Us</span></Link>
           </div>
         </div>
       </div>

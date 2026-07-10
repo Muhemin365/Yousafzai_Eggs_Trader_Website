@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useCMSStore } from '../store/useCMSStore';
 import logo from '../assets/logo.svg';
@@ -7,6 +8,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const company = useCMSStore((s) => s.company);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -14,21 +16,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id) => (e) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   const navLinks = [
-    { href: '#about', id: 'about', label: 'About Us' },
-    { href: '#products', id: 'products', label: 'Products' },
-    { href: '#solutions', id: 'solutions', label: 'Solutions' },
-    { href: '#process', id: 'process', label: 'Process' },
-    { href: '#quality', id: 'quality', label: 'Quality' },
-    { href: '#contact', id: 'contact', label: 'Contact Us' },
+    { path: '/about', label: 'About Us' },
+    { path: '/products', label: 'Products' },
+    { path: '/solutions', label: 'Solutions' },
+    { path: '/process', label: 'Process' },
+    { path: '/quality', label: 'Quality' },
+    { path: '/contact', label: 'Contact Us' },
   ];
+
+  const isActive = (path) => pathname === path;
 
   return (
     <>
@@ -57,7 +54,7 @@ export default function Navbar() {
             justifyContent: 'space-between',
           }}
         >
-          <a href="#home" className="brand" onClick={scrollTo('home')} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Link to="/" className="brand" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <img
               src={logo}
               alt="Yousafzai EGRO"
@@ -95,7 +92,7 @@ export default function Navbar() {
                 {company.sub}
               </span>
             </div>
-          </a>
+          </Link>
 
           <div
             className="nav-links"
@@ -106,11 +103,11 @@ export default function Navbar() {
             }}
           >
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="nav-link"
-                onClick={scrollTo(link.id)}
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
+                onClick={() => setMobileOpen(false)}
                 style={{
                   fontSize: 13.5,
                   fontWeight: 500,
@@ -127,23 +124,23 @@ export default function Navbar() {
                     position: 'absolute',
                     left: 0,
                     bottom: 0,
-                    width: 0,
+                    width: isActive(link.path) ? '100%' : 0,
                     height: 2,
                     background: '#C8A24A',
                     transition: 'width 0.3s cubic-bezier(.22,1,.36,1)',
                   }}
                   className="nav-underline"
                 />
-              </a>
+              </Link>
             ))}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="btn btn-gold btn-sm"
-              onClick={scrollTo('contact')}
               data-ripple
+              onClick={() => setMobileOpen(false)}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -168,7 +165,7 @@ export default function Navbar() {
               <span style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: 8 }}>
                 Request Quote
               </span>
-            </a>
+            </Link>
             <button
               className="menu-toggle"
               id="menuToggle"
@@ -218,15 +215,15 @@ export default function Navbar() {
           }}
         >
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <Link
+              key={link.path}
+              to={link.path}
               className="m-link"
-              style={{ color: '#fff', fontSize: 20, fontFamily: "'Space Grotesk',sans-serif" }}
-              onClick={scrollTo(link.id)}
+              style={{ color: '#fff', fontSize: 20, fontFamily: "'Space Grotesk',sans-serif", textDecoration: 'none' }}
+              onClick={() => setMobileOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
       )}

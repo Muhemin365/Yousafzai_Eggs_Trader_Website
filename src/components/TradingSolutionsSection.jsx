@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useCMSStore } from '../store/useCMSStore';
 
 export default function TradingSolutionsSection() {
@@ -53,9 +54,9 @@ export default function TradingSolutionsSection() {
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: 44 }} className="reveal">
-          <a href="#contact" className="btn btn-navy" data-ripple>
+          <Link to="/contact" className="btn btn-navy" data-ripple>
             <span>Apply for Partner Program →</span>
-          </a>
+          </Link>
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useCMSStore } from '../store/useCMSStore';
 
 export default function FooterSection() {
@@ -9,7 +10,7 @@ export default function FooterSection() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <div className="brand">
+            <Link to="/" className="brand" style={{ textDecoration: 'none' }}>
               <div className="brand-mark">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#F1E4C3" strokeWidth="1.6" width="22" height="22">
                   <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" />
@@ -19,7 +20,7 @@ export default function FooterSection() {
                 <span className="brand-name">{company.name}</span>
                 <span className="brand-sub">{company.sub}</span>
               </div>
-            </div>
+            </Link>
             <p className="footer-desc">{company.tagline}</p>
             <div className="social-row">
               <a href="#" aria-label="LinkedIn">
@@ -42,19 +43,19 @@ export default function FooterSection() {
           <div className="footer-col">
             <div className="footer-col-title">Company</div>
             {footer.quickLinks.map((link, i) => (
-              <a key={i} href={link.href}>{link.label}</a>
+              <Link key={i} to={link.href}>{link.label}</Link>
             ))}
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Solutions</div>
             {footer.solutionsLinks.map((link, i) => (
-              <a key={i} href={link.href}>{link.label}</a>
+              <Link key={i} to={link.href}>{link.label}</Link>
             ))}
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Resources</div>
             {footer.resourcesLinks.map((link, i) => (
-              <a key={i} href={link.href}>{link.label}</a>
+              <Link key={i} to={link.href}>{link.label}</Link>
             ))}
           </div>
         </div>

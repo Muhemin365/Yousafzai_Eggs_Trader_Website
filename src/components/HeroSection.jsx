@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useCMSStore } from '../store/useCMSStore';
 
 function Counter({ end, suffix }) {
@@ -73,17 +74,17 @@ export default function HeroSection() {
             </h1>
             <p className="lead">{hero.body}</p>
             <div className="hero-actions">
-              <a href={hero.primaryCta.action} className="btn btn-gold" data-ripple>
+              <Link to={hero.primaryCta.action} className="btn btn-gold" data-ripple>
                 <span>
                   {hero.primaryCta.label}
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </span>
-              </a>
-              <a href={hero.secondaryCta.action} className="btn btn-outline" data-ripple>
+              </Link>
+              <Link to={hero.secondaryCta.action} className="btn btn-outline" data-ripple>
                 <span>{hero.secondaryCta.label}</span>
-              </a>
+              </Link>
             </div>
             <div className="trust-row">
               <div className="t-item">
