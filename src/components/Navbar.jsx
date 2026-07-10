@@ -57,15 +57,27 @@ export default function Navbar() {
           }}
         >
           <Link to="/" className="brand" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
-            <img
-              src={logo}
-              alt="Yousafzai EGRO"
+            <div
               style={{
-                height: 52,
-                width: 'auto',
-                flexShrink: 0,
+                background: scrolled ? 'transparent' : 'rgba(255,255,255,0.12)',
+                borderRadius: 10,
+                padding: '4px 6px',
+                display: 'flex',
+                alignItems: 'center',
+                transition: 'background 0.4s',
               }}
-            />
+            >
+              <img
+                src={logo}
+                alt="Yousafzai EGRO"
+                style={{
+                  height: 48,
+                  width: 'auto',
+                  flexShrink: 0,
+                  display: 'block',
+                }}
+              />
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span
                 className="brand-name"
