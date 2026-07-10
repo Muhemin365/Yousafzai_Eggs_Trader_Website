@@ -133,18 +133,18 @@ export default function SupplyChainSection() {
         .flow-desc { font-size: 11.5px; color: #707888; line-height: 1.5; max-width: 160px; margin: 0 auto; }
         .card-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
         .card-grid.cols-3 { grid-template-columns: repeat(3,1fr); }
-        .feature-card { background: #FFFFFF; border: 1px solid #EEF1F5; border-radius: 24px; padding: 34px 28px; transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s cubic-bezier(.22,1,.36,1), border-color .4s; position: relative; overflow: hidden; }
+        .feature-card { background: #FFFFFF; border: 1px solid #EEF1F5; border-radius: 24px; padding: 40px 34px; transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s cubic-bezier(.22,1,.36,1), border-color .4s; position: relative; overflow: hidden; }
         .feature-card::before { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 3px; background: linear-gradient(90deg,#9C7B2E,#C8A24A); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,1,.36,1); }
         .feature-card:hover { transform: translateY(-8px); box-shadow: 0 28px 70px rgba(11,37,69,0.16); border-color: transparent; }
         .feature-card:hover::before { transform: scaleX(1); }
-        .f-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(145deg,#0B2545,#123A6B); display: flex; align-items: center; justify-content: center; color: #F1E4C3; margin-bottom: 22px; }
-        .f-title { font-weight: 700; font-size: 16px; color: #0B2545; margin-bottom: 10px; }
-        .f-body { font-size: 13.5px; color: #707888; line-height: 1.7; }
+        .f-icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(145deg,#0B2545,#123A6B); display: flex; align-items: center; justify-content: center; color: #F1E4C3; margin-bottom: 22px; }
+        .f-title { font-weight: 700; font-size: 18px; color: #0B2545; margin-bottom: 12px; }
+        .f-body { font-size: 14.5px; color: #707888; line-height: 1.7; }
         @media (max-width: 1080px) { .card-grid { grid-template-columns: repeat(2,1fr); } }
         @media (max-width: 860px) { .flow-wrap { flex-direction: column; gap: 30px; } .flow-line { display: none; } }
-        @media (max-width: 640px) { .card-grid { gap: 8px; width: 100%; } .feature-card { padding: 16px 12px; } .f-icon { width: 36px; height: 36px; margin-bottom: 10px; border-radius: 10px; } .f-title { font-size: 12px; margin-bottom: 4px; } .f-body { font-size: 11px; } .feature-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; text-align: center; }
+        @media (max-width: 640px) { .card-grid { gap: 10px; } .feature-card { padding: 22px 18px; } .f-icon { width: 42px; height: 42px; margin-bottom: 14px; } .f-title { font-size: 14px; margin-bottom: 8px; } .f-body { font-size: 12.5px; } .feature-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 60%; text-align: center; }
         .feature-card:nth-child(3) .f-icon { margin-left: auto; margin-right: auto; } }
-        @media (max-width: 380px) { .feature-card { padding: 14px 10px; } .f-icon { width: 32px; height: 32px; } .f-title { font-size: 11.5px; } .f-body { font-size: 10.5px; } }
+        @media (max-width: 420px) { .feature-card { padding: 18px 14px; } .f-icon { width: 36px; height: 36px; } .f-title { font-size: 13px; } .f-body { font-size: 11.5px; } .feature-card:nth-child(3) { width: 70%; } }
       `}</style>
     </div>
   );
