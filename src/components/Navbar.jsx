@@ -61,11 +61,9 @@ export default function Navbar() {
               src={logo}
               alt="Yousafzai EGRO"
               style={{
-                height: 42,
+                height: 52,
                 width: 'auto',
                 flexShrink: 0,
-                filter: (!scrolled && isHome) ? 'brightness(0) invert(1)' : 'none',
-                transition: 'filter 0.4s',
               }}
             />
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
