@@ -83,6 +83,16 @@ export default function Layout() {
         .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
         .sec-title { font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: clamp(1.9rem,3vw,2.7rem); color: #0B2545; line-height: 1.18; letter-spacing: -0.01em; }
         .sec-sub { font-size: 15.5px; color: #707888; margin-top: 16px; line-height: 1.75; }
+        @media (max-width: 640px) {
+          .sec-head { padding: 24px 20px; margin-bottom: 40px; border-radius: 16px; }
+          .sec-sub { font-size: 14px; }
+          section { padding: 80px 0 !important; }
+        }
+        @media (max-width: 420px) {
+          .sec-head { padding: 20px 16px; border-radius: 12px; }
+          .sec-sub { font-size: 13px; }
+          section { padding: 60px 0 !important; }
+        }
       `}</style>
     </>
   );

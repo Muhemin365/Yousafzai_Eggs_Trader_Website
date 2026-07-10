@@ -247,6 +247,17 @@ export default function Navbar() {
           .nav-links { display: none !important; }
           .menu-toggle { display: flex !important; }
         }
+        @media (max-width: 640px) {
+          .brand-name { font-size: 13px !important; }
+          .brand-sub { display: none !important; }
+          .brand { gap: 8px !important; }
+        }
+        @media (max-width: 420px) {
+          .nav > div { padding-left: 16px !important; padding-right: 16px !important; }
+          .brand img { height: 36px !important; }
+          .btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
+          .btn-sm span { gap: 4px !important; }
+        }
       `}</style>
     </>
   );
