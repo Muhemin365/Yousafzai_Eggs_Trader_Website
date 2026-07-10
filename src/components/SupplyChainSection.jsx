@@ -141,8 +141,7 @@ export default function SupplyChainSection() {
         @media (max-width: 1080px) {
           .card-grid,
           .card-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
-          .feature-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; text-align: center; }
-          .feature-card:nth-child(3) .f-icon { margin-left: auto; margin-right: auto; }
+          .feature-card:nth-child(3) { grid-column: 1 / -1; }
           .feature-card:nth-child(4) { grid-column: 1 / -1; }
         }
         @media (max-width: 860px) {
