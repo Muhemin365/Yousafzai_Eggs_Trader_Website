@@ -131,7 +131,7 @@ export default function SupplyChainSection() {
         .flow-wrap.lit .flow-dot { border-color: #C8A24A; color: #9C7B2E; }
         .flow-title { font-weight: 700; font-size: 13.5px; color: #0B2545; margin-bottom: 6px; }
         .flow-desc { font-size: 11.5px; color: #707888; line-height: 1.5; max-width: 160px; margin: 0 auto; }
-        .card-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+        .card-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; width: 100%; }
         .card-grid.cols-3 { grid-template-columns: repeat(3,1fr); }
         .feature-card { background: #F5F7FA; border-radius: 24px; padding: 32px 28px; transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1); position: relative; overflow: hidden; }
         .feature-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(11,37,69,0.10); background: #FFFFFF; }
@@ -140,10 +140,28 @@ export default function SupplyChainSection() {
         .f-body { font-size: 13px; color: #707888; line-height: 1.6; }
         @media (max-width: 1080px) {
           .card-grid { grid-template-columns: repeat(2,1fr); }
+          .feature-card { padding: 28px 22px; }
           .feature-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; text-align: center; }
           .feature-card:nth-child(3) .f-icon { margin-left: auto; margin-right: auto; }
+          .feature-card:nth-child(4) { grid-column: 1 / -1; }
         }
-        @media (max-width: 860px) { .flow-wrap { flex-direction: column; gap: 30px; } .flow-line { display: none; } .feature-card:nth-child(3) { width: 100%; } }
+        @media (max-width: 860px) { .flow-wrap { flex-direction: column; gap: 30px; } .flow-line { display: none; } }
+        @media (max-width: 640px) {
+          .card-grid { gap: 14px; }
+          .feature-card { padding: 22px 18px; border-radius: 20px; }
+          .f-icon { width: 46px; height: 46px; margin-bottom: 14px; border-radius: 12px; }
+          .f-title { font-size: 14px; margin-bottom: 6px; }
+          .f-body { font-size: 12px; }
+          .feature-card:nth-child(3) { width: 100%; }
+          .feature-card:nth-child(4) { grid-column: auto; }
+        }
+        @media (max-width: 400px) {
+          .card-grid { gap: 10px; }
+          .feature-card { padding: 18px 14px; border-radius: 18px; }
+          .f-icon { width: 40px; height: 40px; margin-bottom: 12px; }
+          .f-title { font-size: 13px; }
+          .f-body { font-size: 11px; }
+        }
       `}</style>
     </div>
   );
