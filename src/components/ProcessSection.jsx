@@ -63,7 +63,6 @@ export default function ProcessSection() {
         .proc-title { font-weight: 700; font-size: 15px; color: #0B2545; margin-bottom: 10px; }
         .proc-body { font-size: 13px; color: #707888; line-height: 1.65; }
         @media (max-width: 1080px) { .process-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 860px) { .process-grid { grid-template-columns: 1fr; } }
       `}</style>
     </section>
   );

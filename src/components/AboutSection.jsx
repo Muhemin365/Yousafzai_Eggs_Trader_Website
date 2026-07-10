@@ -137,14 +137,15 @@ export default function AboutSection() {
         .reveal-stagger.in > *:nth-child(4) { transition-delay: .26s; }
         .reveal-stagger.in > *:nth-child(5) { transition-delay: .33s; }
         .reveal-stagger.in > *:nth-child(6) { transition-delay: .40s; }
-        @media (max-width: 860px) {
-          .about-grid { grid-template-columns: 1fr; }
-          .team-grid { grid-template-columns: 1fr; }
-          .overview-wrap { grid-template-columns: 1fr; }
-          section { padding: 80px 0; }
-        }
         @media (max-width: 1080px) {
           .team-grid { grid-template-columns: repeat(2,1fr); }
+          .team-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; }
+        }
+        @media (max-width: 860px) {
+          .about-grid { grid-template-columns: 1fr; }
+          .overview-wrap { grid-template-columns: 1fr; }
+          section { padding: 80px 0; }
+          .team-card:nth-child(3) { width: 100%; }
         }
       `}</style>
     </div>

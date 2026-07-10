@@ -157,8 +157,8 @@ export default function QualitySection() {
         .test-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(145deg,#0B2545,#123A6B); color: #F1E4C3; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 14px; }
         .test-name { font-weight: 700; font-size: 13.5px; color: #0B2545; }
         .test-role { font-size: 11.5px; color: #707888; }
-        @media (max-width: 1080px) { .cert-grid { grid-template-columns: repeat(2,1fr); } .test-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 860px) { .cert-grid { grid-template-columns: 1fr; } .test-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1080px) { .cert-grid { grid-template-columns: repeat(2,1fr); } .test-grid { grid-template-columns: repeat(2,1fr); } .test-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; } }
+        @media (max-width: 860px) { .test-card:nth-child(3) { width: 100%; } }
       `}</style>
     </div>
   );

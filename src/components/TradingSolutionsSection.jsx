@@ -79,7 +79,8 @@ export default function TradingSolutionsSection() {
         .tf-item svg { width: 16px; height: 16px; color: #9C7B2E; flex-shrink: 0; margin-top: 2px; }
         .btn-navy { background: #0B2545; color: #FFFFFF; padding: 13px 26px; border-radius: 9px; border: none; cursor: pointer; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s cubic-bezier(.22,1,.36,1); }
         .btn-navy:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(11,37,69,0.35); }
-        @media (max-width: 1080px) { .tier-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1080px) { .tier-grid { grid-template-columns: repeat(2,1fr); } .tier-card:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; } }
+        @media (max-width: 640px) { .tier-card:nth-child(3) { width: 100%; } }
       `}</style>
     </section>
   );
