@@ -9,12 +9,14 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const company = useCMSStore((s) => s.company);
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
 
   useEffect(() => {
+    setScrolled(!isHome);
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isHome]);
 
   const navLinks = [
     { path: '/about', label: 'About Us' },
@@ -62,6 +64,8 @@ export default function Navbar() {
                 height: 42,
                 width: 'auto',
                 flexShrink: 0,
+                filter: (!scrolled && isHome) ? 'brightness(0) invert(1)' : 'none',
+                transition: 'filter 0.4s',
               }}
             />
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>

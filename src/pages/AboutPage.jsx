@@ -1,5 +1,11 @@
+import PageBanner from '../components/PageBanner';
 import AboutSection from '../components/AboutSection';
 
 export default function AboutPage() {
-  return <AboutSection />;
+  return (
+    <>
+      <PageBanner title="About Us" subtitle="Discover the story behind Yousafzai EGRO — our values, our team, and our commitment to quality egg supply." />
+      <AboutSection />
+    </>
+  );
 }
