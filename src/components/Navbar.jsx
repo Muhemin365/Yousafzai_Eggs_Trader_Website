@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useCMSStore } from '../store/useCMSStore';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.jpg';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
