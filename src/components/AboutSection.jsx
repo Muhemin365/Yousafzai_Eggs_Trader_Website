@@ -101,12 +101,8 @@ export default function AboutSection() {
       <style>{`
         section { padding: 120px 0; position: relative; }
         .section-alt { background: #FFFFFF; }
-        .tag-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #9C7B2E; margin-bottom: 18px; }
-        .tag-eyebrow::before { content: ''; width: 22px; height: 1.6px; background: #9C7B2E; }
-        .sec-head { max-width: 680px; margin-bottom: 64px; }
+        .sec-head { max-width: 680px; }
         .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
-        .sec-title { font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: clamp(1.9rem,3vw,2.7rem); color: #0B2545; line-height: 1.18; letter-spacing: -0.01em; }
-        .sec-sub { font-size: 15.5px; color: #707888; margin-top: 16px; line-height: 1.75; }
         .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 72px; align-items: start; }
         .quote-block { background: linear-gradient(155deg,#0B2545,#123A6B); border-radius: 32px; padding: 48px 44px; color: #FFFFFF; position: relative; overflow: hidden; }
         .quote-block::after { content: '"'; position: absolute; top: -30px; right: 18px; font-family: 'Space Grotesk',sans-serif; font-size: 180px; color: rgba(255,255,255,0.06); }
