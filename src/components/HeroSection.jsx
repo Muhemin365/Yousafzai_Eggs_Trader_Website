@@ -60,7 +60,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <header className="hero" id="home" ref={heroRef}>
+      <header className="hero hero-enter" id="home" ref={heroRef}>
         <div className="hero-glow" />
         <div className="hero-glow b" />
         <div className="container hero-grid">
@@ -123,7 +123,7 @@ export default function HeroSection() {
         </div>
       </header>
 
-      <div className="stat-strip">
+      <div className="stat-strip stat-strip-enter">
         <div className="container">
           {hero.stats.map((stat, i) => (
             <div key={i} className="stat">
@@ -260,6 +260,11 @@ export default function HeroSection() {
         .btn-outline:hover { border-color: #C8A24A; background: rgba(255,255,255,0.06); }
         .btn-sm { padding: 10px 20px; font-size: 13px; }
 
+        .hero-enter { animation: heroIn 1s cubic-bezier(.22,1,.36,1) both; }
+        @keyframes heroIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-enter .hero-grid > * { animation: heroSlide .8s cubic-bezier(.22,1,.36,1) both; }
+        .hero-enter .hero-grid > *:nth-child(1) { animation-delay: .2s; }
+        .hero-enter .hero-grid > *:nth-child(2) { animation-delay: .35s; }
         @media (max-width: 860px) {
           .hero-grid { grid-template-columns: 1fr; }
           .hero-visual { display: none; }

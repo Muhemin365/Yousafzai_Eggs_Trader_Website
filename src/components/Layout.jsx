@@ -60,7 +60,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="page-enter">
         <Outlet />
       </main>
       <FooterSection />
@@ -72,6 +72,8 @@ export default function Layout() {
       </div>
 
       <style>{`
+        .page-enter { animation: pageFadeIn .6s cubic-bezier(.22,1,.36,1) both; }
+        @keyframes pageFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         .ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.55); transform: scale(0); animation: rippleAnim .6s ease-out; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(3.2); opacity: 0; } }
         .back-top { position: fixed; bottom: 28px; right: 28px; width: 48px; height: 48px; border-radius: 50%; background: #0B2545; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 14px 36px rgba(11,37,69,0.10); opacity: 0; transform: translateY(10px); transition: opacity .3s, transform .3s; z-index: 300; }

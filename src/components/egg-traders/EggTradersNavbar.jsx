@@ -1,0 +1,158 @@
+import { Link, useLocation } from 'react-router-dom';
+import { X } from 'lucide-react';
+
+const etTheme = {
+  navy: '#0D6B3D',
+  'navy-2': '#059669',
+  'navy-deep': '#064E3B',
+  'navy-glow': 'rgba(5,150,105,0.35)',
+  gold: '#F59E0B',
+  'gold-lt': '#FDE68A',
+  'gold-dk': '#D97706',
+};
+
+const navLinks = [
+  { path: '/egg-traders/about', label: 'About Us' },
+  { path: '/egg-traders/products', label: 'Products' },
+  { path: '/egg-traders/solutions', label: 'Solutions' },
+  { path: '/egg-traders/process', label: 'Process' },
+  { path: '/egg-traders/quality', label: 'Quality' },
+  { path: '/egg-traders/contact', label: 'Contact Us' },
+];
+
+export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }) {
+  const { pathname } = useLocation();
+  const isActive = (path) => pathname === path;
+
+  return (
+    <>
+      <nav
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
+          padding: scrolled ? '12px 0' : '22px 0',
+          background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(16px) saturate(160%)' : 'none',
+          boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.06)' : 'none',
+          transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+            <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(145deg,${etTheme.navy},${etTheme['navy-2']})`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: `0 6px 16px ${etTheme['navy-glow']}` }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FDE68A" strokeWidth="1.6" width="20" height="20">
+                <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" />
+              </svg>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: scrolled ? etTheme.navy : '#FFFFFF', transition: 'color 0.4s' }}>
+                Egg Traders
+              </span>
+              <span style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: scrolled ? etTheme['gold-dk'] : etTheme['gold-lt'], fontWeight: 600, transition: 'color 0.4s' }}>
+                Poultry Marketplace
+              </span>
+            </div>
+          </Link>
+
+          <div className="et-nav-links" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`et-nav-link ${isActive(link.path) ? 'active' : ''}`}
+                style={{
+                  fontSize: 13.5, fontWeight: 500,
+                  color: scrolled ? '#444C5C' : 'rgba(255,255,255,0.86)',
+                  position: 'relative', padding: '6px 0',
+                  transition: 'opacity 0.25s, color 0.4s', textDecoration: 'none',
+                }}
+              >
+                {link.label}
+                <span style={{
+                  position: 'absolute', left: 0, bottom: 0,
+                  width: isActive(link.path) ? '100%' : 0, height: 2,
+                  background: etTheme.gold,
+                  transition: 'width 0.3s cubic-bezier(.22,1,.36,1)',
+                }} />
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+            <Link to="/egg-traders/contact" className="et-btn et-btn-primary et-btn-sm" style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: 13,
+              padding: '10px 20px', borderRadius: 9, border: 'none', cursor: 'pointer',
+              position: 'relative', overflow: 'hidden', whiteSpace: 'nowrap',
+              background: 'linear-gradient(120deg,#D97706,#F59E0B 55%,#FDE68A)',
+              color: '#064E3B', boxShadow: '0 10px 24px rgba(245,158,11,0.35)',
+              textDecoration: 'none',
+            }}>
+              <span style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: 8 }}>
+                Start Trading
+              </span>
+            </Link>
+            <Link to="/" className="et-mainsite-link" style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: 12.5,
+              padding: '9px 16px', borderRadius: 8,
+              border: `1.5px solid ${scrolled ? etTheme.navy : 'rgba(255,255,255,0.4)'}`,
+              background: 'transparent', color: scrolled ? etTheme.navy : '#FFFFFF',
+              cursor: 'pointer', textDecoration: 'none', whiteSpace: 'nowrap',
+            }}>
+              Main Site
+            </Link>
+            <button
+              className="et-menu-toggle"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              style={{
+                display: 'none', width: 38, height: 38, borderRadius: 8,
+                border: `1px solid ${scrolled ? '#DBDFE6' : 'rgba(255,255,255,0.3)'}`,
+                background: 'transparent', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+              }}
+            >
+              {mobileOpen ? (
+                <X size={18} color={scrolled ? etTheme.navy : '#FFFFFF'} />
+              ) : (
+                <>
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', display: 'block', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', display: 'block', marginTop: 4, transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', display: 'block', marginTop: 4, transition: '0.3s' }} />
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {mobileOpen && (
+        <div style={{ position: 'fixed', inset: 0, background: etTheme['navy-deep'], zIndex: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 30, padding: '40px 20px' }}>
+          {navLinks.map((link) => (
+            <Link key={link.path} to={link.path} style={{ color: '#fff', fontSize: 20, fontFamily: "'Space Grotesk',sans-serif", textDecoration: 'none', textAlign: 'center' }}
+              onClick={() => setMobileOpen(false)}>{link.label}</Link>
+          ))}
+          <Link to="/egg-traders/contact" className="et-mobile-cta" style={{ color: etTheme['gold-lt'], fontSize: 20, fontFamily: "'Space Grotesk',sans-serif", textDecoration: 'none', textAlign: 'center' }}
+            onClick={() => setMobileOpen(false)}>Start Trading</Link>
+        </div>
+      )}
+
+      <style>{`
+        .et-menu-toggle { display: none !important; }
+        .et-mainsite-link { display: inline-flex !important; }
+        @media (max-width: 860px) {
+          .et-nav-links { display: none !important; }
+          .et-menu-toggle { display: flex !important; }
+        }
+        @media (max-width: 640px) {
+          nav > div > a:nth-child(1) span:first-child { font-size: 13px !important; }
+          nav > div > a:nth-child(1) span:last-child { display: none !important; }
+          .et-mainsite-link { display: none !important; }
+        }
+        @media (max-width: 480px) {
+          nav > div { padding-left: 14px !important; padding-right: 14px !important; }
+          .et-btn-sm { padding: 7px 12px !important; font-size: 11px !important; }
+          .et-btn-sm span { gap: 4px !important; }
+        }
+      `}</style>
+    </>
+  );
+}

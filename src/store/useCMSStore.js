@@ -15,6 +15,8 @@ const SECTION_ENDPOINT = {
   company: 'company',
   testimonials: 'testimonials',
   faq: 'faq',
+  ourCompanies: 'our-companies',
+  eggTraders: 'egg-traders',
 };
 
 function deepMerge(defaults, persisted) {
@@ -148,6 +150,14 @@ export const useCMSStore = create(
       updateProductSpecs: (specs) => {
         set((s) => ({ products: { ...s.products, specs } }));
         saveSection('products');
+      },
+      updateOurCompanies: (data) => {
+        set((s) => ({ ourCompanies: { ...s.ourCompanies, ...data } }));
+        saveSection('ourCompanies');
+      },
+      updateEggTraders: (data) => {
+        set((s) => ({ eggTraders: { ...s.eggTraders, ...data } }));
+        saveSection('eggTraders');
       },
     }),
     {

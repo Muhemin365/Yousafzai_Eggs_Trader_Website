@@ -16,6 +16,8 @@ const navItems = [
   { label: 'FAQ', key: 'faq' },
   { label: 'Contact Info', key: 'contact' },
   { label: 'Company Info', key: 'company' },
+  { label: 'Our Companies', key: 'ourCompanies' },
+  { label: 'Egg Traders Site', key: 'eggTraders' },
 ];
 
 export default function AdminLayout({ activeSection, setActiveSection, children }) {
