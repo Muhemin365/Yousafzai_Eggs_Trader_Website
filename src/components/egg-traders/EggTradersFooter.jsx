@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.jpg';
 
 const etTheme = {
   navy: '#0D6B3D',
@@ -15,11 +16,9 @@ export default function EggTradersFooter() {
         <div className="et-footer-grid">
           <div>
             <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18, textDecoration: 'none' }}>
-              <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(145deg,${etTheme.navy},${etTheme['navy-2']})`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FDE68A" strokeWidth="1.6" width="20" height="20">
-                  <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" />
-                </svg>
-              </div>
+            <div style={{ borderRadius: 10, padding: '4px 6px', display: 'flex', alignItems: 'center' }}>
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
+            </div>
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
                 <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, color: '#FFFFFF' }}>Egg Traders</span>
                 <span style={{ fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: etTheme['gold-lt'], fontWeight: 600 }}>Poultry Marketplace</span>

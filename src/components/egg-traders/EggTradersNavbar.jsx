@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { X } from 'lucide-react';
+import logo from '../../assets/logo.jpg';
 
 const etTheme = {
   navy: '#0D6B3D',
@@ -38,10 +39,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
       >
         <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
-            <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(145deg,${etTheme.navy},${etTheme['navy-2']})`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: `0 6px 16px ${etTheme['navy-glow']}` }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#FDE68A" strokeWidth="1.6" width="20" height="20">
-                <path d="M12 2C8 7 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-8-7-13z" />
-              </svg>
+            <div style={{ background: 'transparent', borderRadius: 10, padding: '4px 6px', display: 'flex', alignItems: 'center', transition: 'background 0.4s' }}>
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: scrolled ? etTheme.navy : '#FFFFFF', transition: 'color 0.4s' }}>
