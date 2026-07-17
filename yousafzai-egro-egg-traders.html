@@ -102,14 +102,22 @@ button{font-family:inherit;}
 /* ripple */
 .btn .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.55);transform:scale(0);animation:ripple .6s ease-out;pointer-events:none;}
 @keyframes ripple{to{transform:scale(3.2);opacity:0;}}
-.menu-toggle{display:none;width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;}
-.nav.scrolled .menu-toggle{border-color:var(--gray-300);}
-.menu-toggle span{width:18px;height:1.6px;background:var(--white);transition:.3s;}
+.menu-toggle{display:none;width:36px;height:36px;background:transparent;border:none;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative;z-index:510;padding:0;}
+.menu-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1);transform-origin:center;}
 .nav.scrolled .menu-toggle span{background:var(--navy);}
-.menu-toggle .close-icon{display:none;width:18px;height:18px;color:var(--white);}
-.nav.scrolled .menu-toggle .close-icon{color:var(--navy);}
-.menu-toggle.open span{display:none;}
-.menu-toggle.open .close-icon{display:block;}
+.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.menu-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:490;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;}
+.mobile-overlay.open{opacity:1;visibility:visible;}
+.mobile-panel{position:fixed;top:0;right:0;bottom:0;width:300px;max-width:85vw;background:var(--navy-deep);z-index:495;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;padding:80px 32px 32px;overflow-y:auto;}
+.mobile-panel.open{transform:translateX(0);}
+.mobile-panel .mp-brand{font-family:var(--font-display);font-weight:700;font-size:18px;color:#fff;margin-bottom:4px;}
+.mobile-panel .mp-sub{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:40px;display:block;}
+.mobile-panel a{color:rgba(255,255,255,0.8);font-size:17px;font-family:var(--font-display);text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color .25s;}
+.mobile-panel a:hover{color:var(--gold-lt);}
+.mobile-panel .mp-cta{margin-top:24px;color:var(--gold-lt);font-size:17px;font-family:var(--font-display);text-decoration:none;padding:14px 0;font-weight:600;border-top:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:8px;}
 
 /* ───────────────────── Hero ───────────────────── */
 .hero{position:relative;min-height:100vh;background:radial-gradient(120% 100% at 80% 0%,#173E72 0%,var(--navy) 45%,var(--navy-deep) 100%);overflow:hidden;display:flex;align-items:center;padding:140px 0 90px;}
@@ -417,12 +425,14 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,0.7);padding:80px 0 0;
   .brand-name{font-size:13px !important;}
   .brand-sub{display:none !important;}
   .brand{gap:8px !important;}
+  .mobile-panel{padding:72px 24px 24px;}
 }
 @media (max-width:420px){
   .nav .nav-inner{padding-left:16px !important;padding-right:16px !important;}
   .brand img{height:36px !important;}
   .btn-sm{padding:8px 14px !important;font-size:11.5px !important;}
   .btn-sm span{gap:4px !important;}
+  .mobile-panel{padding:64px 20px 20px;width:100%;max-width:100%;}
 }
 </style>
 </head>
@@ -446,24 +456,23 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,0.7);padding:80px 0 0;
     </div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-gold btn-sm" data-ripple><span>Request Quote</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-        <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
-<!-- mobile menu -->
-<div id="mobileMenu" style="position:fixed;inset:0;background:var(--navy-deep);z-index:480;display:none;flex-direction:column;align-items:center;justify-content:center;gap:30px;">
-  <a href="#about" class="m-link" style="color:#fff;font-size:20px;font-family:var(--font-display)">About Us</a>
-  <a href="#products" class="m-link" style="color:#fff;font-size:20px;font-family:var(--font-display)">Products</a>
-  <a href="#solutions" class="m-link" style="color:#fff;font-size:20px;font-family:var(--font-display)">Solutions</a>
-  <a href="#process" class="m-link" style="color:#fff;font-size:20px;font-family:var(--font-display)">Process</a>
-  <a href="#quality" class="m-link" style="color:#fff;font-size:20px;font-family:var(--font-display)">Quality</a>
-  <a href="#contact" class="m-link" style="color:#fff;font-size:20px;font-family:var(--font-display)">Contact Us</a>
+<!-- mobile overlay + panel -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <span class="mp-brand">Egg Traders</span>
+  <span class="mp-sub">Poultry Marketplace</span>
+  <a href="#about" class="m-link">About Us</a>
+  <a href="#products" class="m-link">Products</a>
+  <a href="#solutions" class="m-link">Solutions</a>
+  <a href="#process" class="m-link">Process</a>
+  <a href="#quality" class="m-link">Quality</a>
+  <a href="#contact" class="m-link">Contact Us</a>
+  <a href="#contact" class="mp-cta">Start Trading<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </div>
 
 <!-- ════════════════ HERO ════════════════ -->
@@ -1036,18 +1045,25 @@ backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'
 
 /* mobile menu */
 const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-menuToggle.addEventListener('click', () => {
-  const open = mobileMenu.style.display === 'flex';
-  mobileMenu.style.display = open ? 'none' : 'flex';
-  menuToggle.classList.toggle('open', !open);
-  document.body.style.overflow = open ? '' : 'hidden';
-});
-document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => {
-  mobileMenu.style.display='none';
+const mobileOverlay = document.getElementById('mobileOverlay');
+const mobilePanel = document.getElementById('mobilePanel');
+function openMobile() {
+  menuToggle.classList.add('open');
+  mobileOverlay.classList.add('open');
+  mobilePanel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobile() {
   menuToggle.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  mobilePanel.classList.remove('open');
   document.body.style.overflow = '';
-}));
+}
+menuToggle.addEventListener('click', () => {
+  if (menuToggle.classList.contains('open')) { closeMobile(); } else { openMobile(); }
+});
+mobileOverlay.addEventListener('click', closeMobile);
+document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', closeMobile));
 
 /* scroll-spy active nav link */
 const navLinks = document.querySelectorAll('.nav-link');
