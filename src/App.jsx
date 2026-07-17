@@ -24,6 +24,7 @@ import HeroEditor from './components/admin/HeroEditor';
 import TextEditor from './components/admin/TextEditor';
 import ProductItemsEditor from './components/admin/ProductItemsEditor';
 import SpecsEditor from './components/admin/SpecsEditor';
+import CmsArrayEditor from './components/admin/CmsArrayEditor';
 import { useCMSStore } from './store/useCMSStore';
 
 function AdminDashboard() {
@@ -235,9 +236,21 @@ function AdminApp() {
       case 'eggTraders': return (
         <div>
           <details open style={{ marginBottom: 24 }}>
+            <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Company Info</summary>
+            <TextEditor
+              data={eggTraders.company}
+              onUpdate={(data) => updateEggTraders({ company: { ...eggTraders.company, ...data } })}
+              fields={[
+                { key: 'name', label: 'Company Name' },
+                { key: 'sub', label: 'Subtitle' },
+                { key: 'tagline', label: 'Tagline', type: 'textarea', rows: 2 },
+              ]}
+            />
+          </details>
+          <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Hero Section</summary>
             <TextEditor
-              data={eggTraders.hero}
+              data={{ eyebrow: eggTraders.hero.eyebrow, h1Line1: eggTraders.hero.h1Line1, h1Highlight: eggTraders.hero.h1Highlight, h1Line2: eggTraders.hero.h1Line2, body: eggTraders.hero.body }}
               onUpdate={(data) => updateEggTraders({ hero: { ...eggTraders.hero, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -247,11 +260,61 @@ function AdminApp() {
                 { key: 'body', label: 'Body', type: 'textarea', rows: 3 },
               ]}
             />
+            <div style={{ marginTop: 16 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>CTA Buttons</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>Primary CTA Label</label>
+                  <input value={eggTraders.hero.primaryCta?.label || ''} onChange={(e) => updateEggTraders({ hero: { ...eggTraders.hero, primaryCta: { ...eggTraders.hero.primaryCta, label: e.target.value } } })} style={inputStyle} />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>Primary CTA Action</label>
+                  <input value={eggTraders.hero.primaryCta?.action || ''} onChange={(e) => updateEggTraders({ hero: { ...eggTraders.hero, primaryCta: { ...eggTraders.hero.primaryCta, action: e.target.value } } })} style={inputStyle} />
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>Secondary CTA Label</label>
+                  <input value={eggTraders.hero.secondaryCta?.label || ''} onChange={(e) => updateEggTraders({ hero: { ...eggTraders.hero, secondaryCta: { ...eggTraders.hero.secondaryCta, label: e.target.value } } })} style={inputStyle} />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>Secondary CTA Action</label>
+                  <input value={eggTraders.hero.secondaryCta?.action || ''} onChange={(e) => updateEggTraders({ hero: { ...eggTraders.hero, secondaryCta: { ...eggTraders.hero.secondaryCta, action: e.target.value } } })} style={inputStyle} />
+                </div>
+              </div>
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Trust Items</h4>
+              <CmsArrayEditor
+                items={eggTraders.hero.trustItems}
+                onUpdate={(items) => updateEggTraders({ hero: { ...eggTraders.hero, trustItems: items } })}
+                fields={[
+                  { key: 'icon', label: 'Icon Name' },
+                  { key: 'text', label: 'Text' },
+                ]}
+                itemLabel="Trust Item"
+                defaults={{ icon: 'ShieldCheck', text: '' }}
+              />
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Stats</h4>
+              <CmsArrayEditor
+                items={eggTraders.hero.stats}
+                onUpdate={(stats) => updateEggTraders({ hero: { ...eggTraders.hero, stats: stats } })}
+                fields={[
+                  { key: 'value', label: 'Value' },
+                  { key: 'suffix', label: 'Suffix' },
+                  { key: 'label', label: 'Label' },
+                ]}
+                itemLabel="Stat"
+                defaults={{ value: '', suffix: '+', label: '' }}
+              />
+            </div>
           </details>
           <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>About Page</summary>
             <TextEditor
-              data={eggTraders.about}
+              data={{ eyebrow: eggTraders.about.eyebrow, title: eggTraders.about.title, subtitle: eggTraders.about.subtitle, quote: eggTraders.about.quote, quoteFooter: eggTraders.about.quoteFooter }}
               onUpdate={(data) => updateEggTraders({ about: { ...eggTraders.about, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -261,11 +324,64 @@ function AdminApp() {
                 { key: 'quoteFooter', label: 'Quote Footer' },
               ]}
             />
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Paragraphs</h4>
+              <CmsArrayEditor
+                items={eggTraders.about.paragraphs?.map((p, i) => ({ text: p }))}
+                onUpdate={(items) => updateEggTraders({ about: { ...eggTraders.about, paragraphs: items.map(i => i.text) } })}
+                fields={[{ key: 'text', label: 'Paragraph', type: 'textarea', rows: 3 }]}
+                itemLabel="Paragraph"
+                defaults={{ text: '' }}
+              />
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Features</h4>
+              <CmsArrayEditor
+                items={eggTraders.about.features}
+                onUpdate={(features) => updateEggTraders({ about: { ...eggTraders.about, features: features } })}
+                fields={[
+                  { key: 'icon', label: 'Icon Name' },
+                  { key: 'title', label: 'Title' },
+                  { key: 'body', label: 'Body', type: 'textarea', rows: 2 },
+                ]}
+                itemLabel="Feature"
+                defaults={{ icon: 'Feather', title: '', body: '' }}
+              />
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Team</h4>
+              <CmsArrayEditor
+                items={eggTraders.about.team}
+                onUpdate={(team) => updateEggTraders({ about: { ...eggTraders.about, team: team } })}
+                fields={[
+                  { key: 'initials', label: 'Initials' },
+                  { key: 'name', label: 'Name' },
+                  { key: 'role', label: 'Role' },
+                  { key: 'bio', label: 'Bio', type: 'textarea', rows: 2 },
+                ]}
+                itemLabel="Team Member"
+                defaults={{ initials: '', name: '', role: '', bio: '' }}
+              />
+            </div>
+          </details>
+          <details style={{ marginBottom: 24 }}>
+            <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Services</summary>
+            <CmsArrayEditor
+              items={eggTraders.services}
+              onUpdate={(services) => updateEggTraders({ services: services })}
+              fields={[
+                { key: 'num', label: 'Number' },
+                { key: 'title', label: 'Title' },
+                { key: 'body', label: 'Body', type: 'textarea', rows: 2 },
+              ]}
+              itemLabel="Service"
+              defaults={{ num: '0' + (eggTraders.services?.length + 1 || 1), title: '', body: '' }}
+            />
           </details>
           <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Products Page</summary>
             <TextEditor
-              data={eggTraders.products}
+              data={{ eyebrow: eggTraders.products.eyebrow, title: eggTraders.products.title, subtitle: eggTraders.products.subtitle }}
               onUpdate={(data) => updateEggTraders({ products: { ...eggTraders.products, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -273,11 +389,33 @@ function AdminApp() {
                 { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
               ]}
             />
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Product Items</h4>
+              <CmsArrayEditor
+                items={eggTraders.products.items}
+                onUpdate={(items) => updateEggTraders({ products: { ...eggTraders.products, items: items } })}
+                fields={[
+                  { key: 'name', label: 'Name' },
+                  { key: 'badge', label: 'Badge' },
+                  { key: 'description', label: 'Description', type: 'textarea', rows: 2 },
+                  { key: 'image', label: 'Image URL' },
+                ]}
+                itemLabel="Product"
+                defaults={{ badge: 'New', name: '', description: '', tags: ['', ''], image: '' }}
+              />
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Specifications</h4>
+              <SpecsEditor
+                specs={eggTraders.products.specs}
+                onUpdate={(specs) => updateEggTraders({ products: { ...eggTraders.products, specs: specs } })}
+              />
+            </div>
           </details>
           <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Solutions Page</summary>
             <TextEditor
-              data={eggTraders.solutions}
+              data={{ eyebrow: eggTraders.solutions.eyebrow, title: eggTraders.solutions.title, subtitle: eggTraders.solutions.subtitle }}
               onUpdate={(data) => updateEggTraders({ solutions: { ...eggTraders.solutions, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -285,11 +423,26 @@ function AdminApp() {
                 { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
               ]}
             />
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Tiers</h4>
+              <CmsArrayEditor
+                items={eggTraders.solutions.tiers}
+                onUpdate={(tiers) => updateEggTraders({ solutions: { ...eggTraders.solutions, tiers: tiers } })}
+                fields={[
+                  { key: 'badge', label: 'Badge' },
+                  { key: 'name', label: 'Name' },
+                  { key: 'desc', label: 'Description' },
+                  { key: 'featured', label: 'Featured', type: 'select', options: [{ value: true, label: 'Yes' }, { value: false, label: 'No' }] },
+                ]}
+                itemLabel="Tier"
+                defaults={{ badge: '', name: '', desc: '', featured: false, features: [] }}
+              />
+            </div>
           </details>
           <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Process Page</summary>
             <TextEditor
-              data={eggTraders.process}
+              data={{ eyebrow: eggTraders.process.eyebrow, title: eggTraders.process.title, subtitle: eggTraders.process.subtitle }}
               onUpdate={(data) => updateEggTraders({ process: { ...eggTraders.process, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -297,11 +450,26 @@ function AdminApp() {
                 { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
               ]}
             />
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Steps</h4>
+              <CmsArrayEditor
+                items={eggTraders.process.steps}
+                onUpdate={(steps) => updateEggTraders({ process: { ...eggTraders.process, steps: steps } })}
+                fields={[
+                  { key: 'num', label: 'Number' },
+                  { key: 'icon', label: 'Icon Name' },
+                  { key: 'title', label: 'Title' },
+                  { key: 'body', label: 'Body', type: 'textarea', rows: 2 },
+                ]}
+                itemLabel="Step"
+                defaults={{ num: '', icon: '', title: '', body: '' }}
+              />
+            </div>
           </details>
           <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Quality Page</summary>
             <TextEditor
-              data={eggTraders.quality}
+              data={{ eyebrow: eggTraders.quality.eyebrow, title: eggTraders.quality.title, subtitle: eggTraders.quality.subtitle }}
               onUpdate={(data) => updateEggTraders({ quality: { ...eggTraders.quality, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -309,11 +477,64 @@ function AdminApp() {
                 { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
               ]}
             />
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Batch Trace</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>Batch ID</label>
+                  <input value={eggTraders.quality.batch?.id || ''} onChange={(e) => updateEggTraders({ quality: { ...eggTraders.quality, batch: { ...eggTraders.quality.batch, id: e.target.value } } })} style={inputStyle} />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>Batch Title</label>
+                  <input value={eggTraders.quality.batch?.title || ''} onChange={(e) => updateEggTraders({ quality: { ...eggTraders.quality, batch: { ...eggTraders.quality.batch, title: e.target.value } } })} style={inputStyle} />
+                </div>
+              </div>
+              <CmsArrayEditor
+                items={eggTraders.quality.batch?.steps}
+                onUpdate={(steps) => updateEggTraders({ quality: { ...eggTraders.quality, batch: { ...eggTraders.quality.batch, steps: steps } } })}
+                fields={[
+                  { key: 'title', label: 'Step Title' },
+                  { key: 'time', label: 'Time' },
+                ]}
+                itemLabel="Batch Step"
+                defaults={{ title: '', time: '' }}
+              />
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Certifications</h4>
+              <CmsArrayEditor
+                items={eggTraders.quality.certs}
+                onUpdate={(certs) => updateEggTraders({ quality: { ...eggTraders.quality, certs: certs } })}
+                fields={[
+                  { key: 'icon', label: 'Icon Name' },
+                  { key: 'name', label: 'Name' },
+                  { key: 'body', label: 'Body', type: 'textarea', rows: 2 },
+                  { key: 'status', label: 'Status' },
+                ]}
+                itemLabel="Certification"
+                defaults={{ icon: '', name: '', body: '', status: 'Active' }}
+              />
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Testimonials</h4>
+              <CmsArrayEditor
+                items={eggTraders.quality.testimonials}
+                onUpdate={(testimonials) => updateEggTraders({ quality: { ...eggTraders.quality, testimonials: testimonials } })}
+                fields={[
+                  { key: 'initials', label: 'Initials' },
+                  { key: 'name', label: 'Name' },
+                  { key: 'role', label: 'Role' },
+                  { key: 'text', label: 'Text', type: 'textarea', rows: 2 },
+                ]}
+                itemLabel="Testimonial"
+                defaults={{ initials: '', name: '', role: '', text: '' }}
+              />
+            </div>
           </details>
-          <details>
+          <details style={{ marginBottom: 24 }}>
             <summary style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: '#0B2545', margin: '0 0 16px', cursor: 'pointer' }}>Contact Page</summary>
             <TextEditor
-              data={eggTraders.contact}
+              data={{ eyebrow: eggTraders.contact.eyebrow, title: eggTraders.contact.title, subtitle: eggTraders.contact.subtitle }}
               onUpdate={(data) => updateEggTraders({ contact: { ...eggTraders.contact, ...data } })}
               fields={[
                 { key: 'eyebrow', label: 'Eyebrow' },
@@ -321,6 +542,20 @@ function AdminApp() {
                 { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 2 },
               ]}
             />
+            <div style={{ marginTop: 20 }}>
+              <h4 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: '#0B2545', margin: '0 0 12px' }}>Contact Info</h4>
+              <CmsArrayEditor
+                items={eggTraders.contact.info}
+                onUpdate={(info) => updateEggTraders({ contact: { ...eggTraders.contact, info: info } })}
+                fields={[
+                  { key: 'icon', label: 'Icon Name' },
+                  { key: 'label', label: 'Label' },
+                  { key: 'value', label: 'Value' },
+                ]}
+                itemLabel="Info Item"
+                defaults={{ icon: '', label: '', value: '' }}
+              />
+            </div>
           </details>
         </div>
       );
