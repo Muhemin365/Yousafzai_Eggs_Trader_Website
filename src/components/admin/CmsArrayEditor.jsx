@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ImageUpload from './ImageUpload';
 
 const input = {
   width: '100%', padding: '10px 14px', border: '1.4px solid #DBDFE6',
@@ -26,6 +27,8 @@ export default function CmsArrayEditor({ items, onUpdate, fields, itemLabel, def
     handleUpdate(data.filter((_, i) => i !== index));
   };
 
+  const isImage = (key) => key.toLowerCase().includes('image') || key.toLowerCase().includes('icon') || key.toLowerCase().includes('logo');
+
   return (
     <div>
       {data.map((item, i) => (
@@ -38,23 +41,31 @@ export default function CmsArrayEditor({ items, onUpdate, fields, itemLabel, def
           </div>
           {fields.map((field) => {
             const val = item[field.key];
-            const isImage = field.key.toLowerCase().includes('image') || field.key.toLowerCase().includes('icon');
             return (
               <div key={field.key} style={{ marginBottom: 10 }}>
-                <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>{field.label}</label>
-                {field.type === 'textarea' ? (
-                  <textarea value={val || ''} onChange={(e) => update(i, field.key, e.target.value)} rows={field.rows || 2} style={{ ...input, resize: 'vertical' }} />
+                {isImage(field.key) ? (
+                  <ImageUpload
+                    value={val || ''}
+                    onChange={(v) => update(i, field.key, v)}
+                    label={field.label}
+                  />
+                ) : field.type === 'textarea' ? (
+                  <>
+                    <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>{field.label}</label>
+                    <textarea value={val || ''} onChange={(e) => update(i, field.key, e.target.value)} rows={field.rows || 2} style={{ ...input, resize: 'vertical' }} />
+                  </>
                 ) : field.type === 'select' ? (
-                  <select value={val || ''} onChange={(e) => update(i, field.key, e.target.value)} style={input}>
-                    {field.options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                  </select>
+                  <>
+                    <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>{field.label}</label>
+                    <select value={String(val)} onChange={(e) => update(i, field.key, e.target.value === 'true' ? true : e.target.value === 'false' ? false : e.target.value)} style={input}>
+                      {field.options.map((o) => <option key={String(o.value)} value={String(o.value)}>{o.label}</option>)}
+                    </select>
+                  </>
                 ) : (
-                  <input value={val || ''} onChange={(e) => update(i, field.key, e.target.value)} style={input} placeholder={field.placeholder || ''} />
-                )}
-                {isImage && val && (
-                  <div style={{ marginTop: 6, borderRadius: 6, overflow: 'hidden', width: 100, height: 70 }}>
-                    <img src={val} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => { e.target.style.display = 'none'; }} />
-                  </div>
+                  <>
+                    <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#444C5C', marginBottom: 4 }}>{field.label}</label>
+                    <input value={val || ''} onChange={(e) => update(i, field.key, e.target.value)} style={input} placeholder={field.placeholder || ''} />
+                  </>
                 )}
               </div>
             );

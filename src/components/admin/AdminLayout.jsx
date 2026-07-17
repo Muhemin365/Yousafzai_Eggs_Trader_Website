@@ -17,7 +17,16 @@ const navItems = [
   { label: 'Contact Info', key: 'contact' },
   { label: 'Company Info', key: 'company' },
   { label: 'Our Companies', key: 'ourCompanies' },
-  { label: 'Egg Traders Site', key: 'eggTraders' },
+  { type: 'divider' },
+  { label: 'ET Company', key: 'eggTradersCompany' },
+  { label: 'ET Hero', key: 'eggTradersHero' },
+  { label: 'ET About', key: 'eggTradersAbout' },
+  { label: 'ET Services', key: 'eggTradersServices' },
+  { label: 'ET Products', key: 'eggTradersProducts' },
+  { label: 'ET Solutions', key: 'eggTradersSolutions' },
+  { label: 'ET Process', key: 'eggTradersProcess' },
+  { label: 'ET Quality', key: 'eggTradersQuality' },
+  { label: 'ET Contact', key: 'eggTradersContact' },
 ];
 
 export default function AdminLayout({ activeSection, setActiveSection, children }) {
@@ -38,27 +47,31 @@ export default function AdminLayout({ activeSection, setActiveSection, children 
           </div>
         </div>
         <div style={{ flex: 1, padding: '12px 0', overflowY: 'auto' }}>
-          {navItems.map((item) => (
-            <div
-              key={item.key}
-              onClick={() => setActiveSection(item.key)}
-              style={{
-                padding: '10px 16px',
-                cursor: 'pointer',
-                background: activeSection === item.key ? 'rgba(200,162,74,0.15)' : 'transparent',
-                borderLeft: activeSection === item.key ? '3px solid #C8A24A' : '3px solid transparent',
-                fontSize: 13,
-                fontWeight: activeSection === item.key ? 600 : 400,
-                color: activeSection === item.key ? '#C8A24A' : 'rgba(255,255,255,0.65)',
-                transition: 'all 0.2s',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {collapsed ? item.label[0] : item.label}
-            </div>
-          ))}
+          {navItems.map((item) =>
+            item.type === 'divider' ? (
+              <div key="div" style={{ height: 1, background: 'rgba(255,255,255,0.1)', margin: '8px 16px' }} />
+            ) : (
+              <div
+                key={item.key}
+                onClick={() => setActiveSection(item.key)}
+                style={{
+                  padding: '10px 16px',
+                  cursor: 'pointer',
+                  background: activeSection === item.key ? 'rgba(200,162,74,0.15)' : 'transparent',
+                  borderLeft: activeSection === item.key ? '3px solid #C8A24A' : '3px solid transparent',
+                  fontSize: 13,
+                  fontWeight: activeSection === item.key ? 600 : 400,
+                  color: activeSection === item.key ? '#C8A24A' : 'rgba(255,255,255,0.65)',
+                  transition: 'all 0.2s',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {collapsed ? item.label[0] : item.label}
+              </div>
+            )
+          )}
         </div>
         <div style={{ padding: '16px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           {!collapsed && (
