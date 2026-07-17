@@ -1020,8 +1020,12 @@ const mobileMenu = document.getElementById('mobileMenu');
 menuToggle.addEventListener('click', () => {
   const open = mobileMenu.style.display === 'flex';
   mobileMenu.style.display = open ? 'none' : 'flex';
+  document.body.style.overflow = open ? '' : 'hidden';
 });
-document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => mobileMenu.style.display='none'));
+document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => {
+  mobileMenu.style.display='none';
+  document.body.style.overflow = '';
+}));
 
 /* scroll-spy active nav link */
 const navLinks = document.querySelectorAll('.nav-link');

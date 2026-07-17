@@ -15,6 +15,11 @@ export default function EggTradersLayout({ noFooter }) {
   }, [pathname]);
 
   useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  useEffect(() => {
     setScrolled(!isHome);
     const onScroll = () => {
       setScrolled(window.scrollY > 40 || !isHome);
