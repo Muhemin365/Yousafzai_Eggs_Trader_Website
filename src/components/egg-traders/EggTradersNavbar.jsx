@@ -106,16 +106,17 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
               style={{
                 display: 'none', width: 38, height: 38, borderRadius: 8,
                 border: `1px solid ${scrolled ? '#DBDFE6' : 'rgba(255,255,255,0.3)'}`,
-                background: 'transparent', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                background: 'transparent', alignItems: 'center', justifyContent: 'center',
+                flexDirection: 'column', gap: 4, cursor: 'pointer',
               }}
             >
               {mobileOpen ? (
                 <X size={18} color={scrolled ? etTheme.navy : '#FFFFFF'} />
               ) : (
                 <>
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', display: 'block', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', display: 'block', marginTop: 4, transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', display: 'block', marginTop: 4, transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? etTheme.navy : '#FFFFFF', transition: '0.3s' }} />
                 </>
               )}
             </button>
