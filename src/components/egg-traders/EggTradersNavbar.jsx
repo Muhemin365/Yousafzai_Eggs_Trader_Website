@@ -147,11 +147,13 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         @media (max-width: 640px) {
           nav > div > a:nth-child(1) span:first-child { font-size: 13px !important; }
           nav > div > a:nth-child(1) span:last-child { display: none !important; }
+          nav > div > a:nth-child(1) { gap: 8px !important; }
           .et-mainsite-link { display: none !important; }
         }
-        @media (max-width: 480px) {
-          nav > div { padding-left: 14px !important; padding-right: 14px !important; }
-          .et-btn-sm { padding: 7px 12px !important; font-size: 11px !important; }
+        @media (max-width: 420px) {
+          nav > div { padding-left: 16px !important; padding-right: 16px !important; }
+          nav > div > a:nth-child(1) img { height: 36px !important; }
+          .et-btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
           .et-btn-sm span { gap: 4px !important; }
         }
       `}</style>
