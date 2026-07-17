@@ -106,6 +106,10 @@ button{font-family:inherit;}
 .nav.scrolled .menu-toggle{border-color:var(--gray-300);}
 .menu-toggle span{width:18px;height:1.6px;background:var(--white);transition:.3s;}
 .nav.scrolled .menu-toggle span{background:var(--navy);}
+.menu-toggle .close-icon{display:none;width:18px;height:18px;color:var(--white);}
+.nav.scrolled .menu-toggle .close-icon{color:var(--navy);}
+.menu-toggle.open span{display:none;}
+.menu-toggle.open .close-icon{display:block;}
 
 /* ───────────────────── Hero ───────────────────── */
 .hero{position:relative;min-height:100vh;background:radial-gradient(120% 100% at 80% 0%,#173E72 0%,var(--navy) 45%,var(--navy-deep) 100%);overflow:hidden;display:flex;align-items:center;padding:140px 0 90px;}
@@ -431,7 +435,12 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,0.7);padding:80px 0 0;
     </div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-gold btn-sm" data-ripple><span>Request Quote</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+        <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
     </div>
   </div>
 </nav>
@@ -1020,10 +1029,12 @@ const mobileMenu = document.getElementById('mobileMenu');
 menuToggle.addEventListener('click', () => {
   const open = mobileMenu.style.display === 'flex';
   mobileMenu.style.display = open ? 'none' : 'flex';
+  menuToggle.classList.toggle('open', !open);
   document.body.style.overflow = open ? '' : 'hidden';
 });
 document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => {
   mobileMenu.style.display='none';
+  menuToggle.classList.remove('open');
   document.body.style.overflow = '';
 }));
 

@@ -102,6 +102,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
             </Link>
             <button
               className="et-menu-toggle"
+              id="menuToggle"
+              aria-label="Menu"
               onClick={() => setMobileOpen(!mobileOpen)}
               style={{
                 display: 'none', width: 38, height: 38, borderRadius: 8,
