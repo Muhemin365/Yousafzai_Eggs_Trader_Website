@@ -30,6 +30,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
           padding: 0,
+          overflow: 'hidden',
           background: 'rgba(240,248,255,0.92)',
           backdropFilter: 'blur(16px) saturate(160%)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
@@ -38,7 +39,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div style={{ background: 'transparent', display: 'flex', alignItems: 'center' }}>
-              <img src={logo} alt="Yousafzai EGRO" style={{ height: 56, width: 'auto', flexShrink: 0, display: 'block' }} />
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 64, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: etTheme.navy }}>

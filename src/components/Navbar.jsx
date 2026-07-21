@@ -37,7 +37,8 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 500,
-          padding: '6px 0',
+          padding: 0,
+          overflow: 'hidden',
           background: 'rgba(240,248,255,0.92)',
           backdropFilter: 'blur(16px) saturate(160%)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
@@ -65,7 +66,7 @@ export default function Navbar() {
                 src={logo}
                 alt="Yousafzai EGRO"
                 style={{
-                  height: 56,
+                  height: 64,
                   width: 'auto',
                   flexShrink: 0,
                   display: 'block',
