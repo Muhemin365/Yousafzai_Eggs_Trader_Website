@@ -59,12 +59,8 @@ export default function Navbar() {
           <Link to="/" className="brand" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div
               style={{
-                background: 'linear-gradient(135deg, rgba(200,162,74,0.92), rgba(156,123,46,0.85))',
-                borderRadius: 12,
-                padding: '4px 10px',
                 display: 'flex',
                 alignItems: 'center',
-                boxShadow: '0 4px 20px rgba(200,162,74,0.25)',
               }}
             >
               <img
