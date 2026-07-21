@@ -39,9 +39,10 @@ export default function Navbar() {
           zIndex: 500,
           padding: 0,
           overflow: 'hidden',
-          background: 'rgba(240,248,255,0.85)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+          background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+          boxShadow: scrolled ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
@@ -58,9 +59,12 @@ export default function Navbar() {
           <Link to="/" className="brand" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div
               style={{
-                background: 'transparent',
+                background: 'linear-gradient(135deg, rgba(200,162,74,0.92), rgba(156,123,46,0.85))',
+                borderRadius: 12,
+                padding: '4px 10px',
                 display: 'flex',
                 alignItems: 'center',
+                boxShadow: '0 4px 20px rgba(200,162,74,0.25)',
               }}
             >
               <img
@@ -94,7 +98,7 @@ export default function Navbar() {
                 style={{
                   fontSize: 13.5,
                   fontWeight: 500,
-                  color: '#444C5C',
+                  color: scrolled ? '#444C5C' : '#FFFFFF',
                   position: 'relative',
           padding: 0,
                   transition: 'opacity 0.25s, color 0.4s',
@@ -159,7 +163,7 @@ export default function Navbar() {
                 width: 38,
                 height: 38,
                 borderRadius: 8,
-                border: '1px solid #DBDFE6',
+                border: `1px solid ${scrolled ? '#DBDFE6' : 'rgba(255,255,255,0.35)'}`,
                 background: 'transparent',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -169,12 +173,12 @@ export default function Navbar() {
               }}
             >
               {mobileOpen ? (
-                <X size={18} color="#0B2545" />
+                <X size={18} color={scrolled ? '#0B2545' : '#FFFFFF'} />
               ) : (
                 <>
-                  <span style={{ width: 18, height: 1.6, background: '#0B2545', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: '#0B2545', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: '#0B2545', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
                 </>
               )}
             </button>
