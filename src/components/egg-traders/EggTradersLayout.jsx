@@ -20,14 +20,14 @@ export default function EggTradersLayout({ noFooter }) {
   }, [mobileOpen]);
 
   useEffect(() => {
-    setScrolled(!isHome);
+    setScrolled(window.scrollY > 40);
     const onScroll = () => {
-      setScrolled(window.scrollY > 40 || !isHome);
+      setScrolled(window.scrollY > 40);
       setShowTop(window.scrollY > 600);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isHome]);
+  }, []);
 
   return (
     <div style={{ fontFamily: "'Inter',sans-serif", background: '#F7F8FA', color: '#1B2230', lineHeight: 1.65, overflowX: 'hidden' }}>

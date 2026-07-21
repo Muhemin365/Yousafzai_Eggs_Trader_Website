@@ -41,7 +41,7 @@ export default function EggTradersPageBanner({ title, subtitle }) {
       </section>
       <style>{`
         .et-page-hero { position: relative; min-height: 280px; display: flex; align-items: center; padding: 140px 0 60px; overflow: hidden; }
-        .et-page-hero-bg { position: absolute; inset: 0; background: radial-gradient(120% 100% at 80% 0%, #059669 0%, #0D6B3D 45%, #064E3B 100%); }
+        .et-page-hero-bg { position: absolute; inset: 0; background: radial-gradient(120% 100% at 80% 0%, #173E72 0%, #0B2545 45%, #071A30 100%); }
         .et-page-hero-bg::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0); background-size: 34px 34px; opacity: .5; }
         .et-page-hero-title { font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: clamp(2.2rem,3.6vw,3.2rem); color: #FFFFFF; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px; }
         .et-page-hero-sub { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 560px; }
