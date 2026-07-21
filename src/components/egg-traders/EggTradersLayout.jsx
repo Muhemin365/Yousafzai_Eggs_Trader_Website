@@ -54,7 +54,7 @@ export default function EggTradersLayout({ noFooter }) {
         ::selection { background: #FDE68A; color: #064E3B; }
         section { padding: 120px 0; position: relative; }
         .section-alt { background: #FFFFFF; }
-        .container { padding-left: 48px !important; padding-right: 32px; }
+        .container { max-width: 1240px; margin-left: auto; margin-right: auto; padding-left: 48px !important; padding-right: 32px; }
         .tag-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #D97706; margin-bottom: 18px; }
         .tag-eyebrow::before { content: ''; width: 22px; height: 1.6px; background: #D97706; }
         .sec-head { max-width: 680px; margin-bottom: 56px; background: #FFFFFF; border: 1px solid #EEF1F5; border-radius: 24px; padding: 32px 36px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }

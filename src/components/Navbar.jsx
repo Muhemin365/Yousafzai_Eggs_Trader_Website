@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useCMSStore } from '../store/useCMSStore';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const company = useCMSStore((s) => s.company);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
 
@@ -78,34 +76,7 @@ export default function Navbar() {
                 }}
               />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-              <span
-                className="brand-name"
-                style={{
-                  fontFamily: "'Space Grotesk',sans-serif",
-                  fontWeight: 700,
-                  fontSize: 16,
-                  letterSpacing: '0.02em',
-                  color: scrolled ? '#0B2545' : '#FFFFFF',
-                  transition: 'color 0.4s',
-                }}
-              >
-                {company.name}
-              </span>
-              <span
-                className="brand-sub"
-                style={{
-                  fontSize: 10,
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: scrolled ? '#9C7B2E' : '#C8A24A',
-                  fontWeight: 600,
-                  transition: 'color 0.4s',
-                }}
-              >
-                {company.sub}
-              </span>
-            </div>
+
           </Link>
 
           <div
@@ -248,8 +219,6 @@ export default function Navbar() {
           .menu-toggle { display: flex !important; }
         }
         @media (max-width: 640px) {
-          .brand-name { font-size: 13px !important; }
-          .brand-sub { display: none !important; }
           .brand { gap: 8px !important; }
         }
         @media (max-width: 420px) {
