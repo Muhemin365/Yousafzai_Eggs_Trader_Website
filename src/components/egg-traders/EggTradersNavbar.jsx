@@ -2,13 +2,13 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 const etTheme = {
-  navy: '#0D6B3D',
-  'navy-2': '#059669',
-  'navy-deep': '#064E3B',
-  'navy-glow': 'rgba(5,150,105,0.35)',
-  gold: '#F59E0B',
-  'gold-lt': '#FDE68A',
-  'gold-dk': '#D97706',
+  navy: '#0B2545',
+  'navy-2': '#173E72',
+  'navy-deep': '#071A30',
+  'navy-glow': 'rgba(200,162,74,0.35)',
+  gold: '#C8A24A',
+  'gold-lt': '#F1E4C3',
+  'gold-dk': '#9C7B2E',
 };
 
 const navLinks = [
@@ -83,8 +83,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
               fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: 13,
               padding: '10px 20px', borderRadius: 9, border: 'none', cursor: 'pointer',
               position: 'relative', overflow: 'hidden', whiteSpace: 'nowrap',
-              background: 'linear-gradient(120deg,#D97706,#F59E0B 55%,#FDE68A)',
-              color: '#064E3B', boxShadow: '0 10px 24px rgba(245,158,11,0.35)',
+              background: 'linear-gradient(120deg,#9C7B2E,#C8A24A 55%,#F1E4C3)',
+              color: '#071A30', boxShadow: '0 10px 24px rgba(200,162,74,0.35)',
               textDecoration: 'none',
             }}>
               <span style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -153,7 +153,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           left: 0;
           right: 0;
           height: 1.5px;
-          background: linear-gradient(90deg, #F59E0B 0%, #D97706 25%, #5A8A7B 60%, rgba(13,107,61,0.06) 85%, transparent 100%);
+          background: linear-gradient(90deg, #C8A24A 0%, #9C7B2E 25%, #5A7B9C 60%, rgba(11,37,69,0.06) 85%, transparent 100%);
         }
         .et-nav-links { display: flex !important; }
         .et-mainsite-link { display: inline-flex !important; }
