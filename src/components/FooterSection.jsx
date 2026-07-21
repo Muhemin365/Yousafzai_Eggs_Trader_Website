@@ -13,7 +13,7 @@ export default function FooterSection() {
           <div className="footer-brand">
             <Link to="/" className="brand" style={{ textDecoration: 'none' }}>
               <div className="brand-mark">
-                <img src={logo} alt="Yousafzai EGRO" style={{ height: 32, width: 'auto', display: 'block' }} />
+                <img src={logo} alt="Yousafzai EGRO" style={{ height: 60, width: 'auto', display: 'block' }} />
               </div>
             </Link>
             <p className="footer-desc">{company.tagline}</p>
@@ -65,7 +65,7 @@ export default function FooterSection() {
         .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.08); }
         .footer-brand .brand-name { color: #FFFFFF; }
         .brand { display: flex; align-items: center; gap: 12px; }
-        .brand-mark { width: auto; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .brand-mark { width: auto; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .footer-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); margin-top: 18px; line-height: 1.7; max-width: 300px; }
         .footer-col-title { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 20px; }
         .footer-col a { display: block; font-size: 13.5px; color: rgba(255,255,255,0.55); margin-bottom: 12px; transition: color .25s; }

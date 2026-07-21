@@ -30,22 +30,22 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
           padding: scrolled ? '12px 0' : '22px 0',
-          background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(16px) saturate(160%)' : 'none',
-          boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.06)' : 'none',
+          background: 'rgba(255,255,255,0.9)',
+          backdropFilter: 'blur(16px) saturate(160%)',
+          boxShadow: '0 1px 0 rgba(0,0,0,0.06)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
         <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div style={{ background: 'transparent', borderRadius: 10, padding: '4px 6px', display: 'flex', alignItems: 'center', transition: 'background 0.4s' }}>
-              <img src={logo} alt="Yousafzai EGRO" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 60, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: scrolled ? etTheme.navy : '#FFFFFF', transition: 'color 0.4s' }}>
+              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: etTheme.navy }}>
                 Egg Traders
               </span>
-              <span style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: scrolled ? etTheme['gold-dk'] : etTheme['gold-lt'], fontWeight: 600, transition: 'color 0.4s' }}>
+              <span style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: etTheme['gold-dk'], fontWeight: 600 }}>
                 Poultry Marketplace
               </span>
             </div>
@@ -59,7 +59,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
                 className={`et-nav-link ${isActive(link.path) ? 'active' : ''}`}
                 style={{
                   fontSize: 13.5, fontWeight: 500,
-                  color: scrolled ? '#444C5C' : 'rgba(255,255,255,0.86)',
+                  color: '#444C5C',
                   position: 'relative', padding: '6px 0',
                   transition: 'opacity 0.25s, color 0.4s', textDecoration: 'none',
                 }}
@@ -93,8 +93,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: 12.5,
               padding: '9px 16px', borderRadius: 8,
-              border: `1.5px solid ${scrolled ? etTheme.navy : 'rgba(255,255,255,0.4)'}`,
-              background: 'transparent', color: scrolled ? etTheme.navy : '#FFFFFF',
+              border: `1.5px solid ${etTheme.navy}`,
+              background: 'transparent', color: etTheme.navy,
               cursor: 'pointer', textDecoration: 'none', whiteSpace: 'nowrap',
             }}>
               Main Site
@@ -159,14 +159,10 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         .et-menu-toggle span {
           display: block;
           width: 22px; height: 2px;
-          background: #FFFFFF;
+          background: ${etTheme.navy};
           border-radius: 2px;
           transition: all .3s cubic-bezier(.22,1,.36,1);
           transform-origin: center;
-        }
-        .nav.scrolled .et-menu-toggle span,
-        .et-menu-toggle.scrolled span {
-          background: ${etTheme.navy};
         }
         .et-menu-toggle.open span:nth-child(1) {
           transform: translateY(7px) rotate(45deg);
@@ -218,7 +214,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         }
         @media (max-width: 420px) {
           nav > div { padding-left: 16px !important; padding-right: 16px !important; }
-          nav > div > a:nth-child(1) img { height: 36px !important; }
+          nav > div > a:nth-child(1) img { height: 44px !important; }
           .et-btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
           .et-btn-sm span { gap: 4px !important; }
           .et-mobile-panel { padding: 64px 20px 20px; width: 100%; max-width: 100%; }

@@ -38,9 +38,9 @@ export default function Navbar() {
           right: 0,
           zIndex: 500,
           padding: scrolled ? '12px 0' : '22px 0',
-          background: scrolled ? 'rgba(255,255,255,0.86)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(16px) saturate(160%)' : 'none',
-          boxShadow: scrolled ? '0 1px 0 rgba(11,37,69,0.06)' : 'none',
+          background: 'rgba(255,255,255,0.86)',
+          backdropFilter: 'blur(16px) saturate(160%)',
+          boxShadow: '0 1px 0 rgba(11,37,69,0.06)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
@@ -57,19 +57,18 @@ export default function Navbar() {
           <Link to="/" className="brand" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div
               style={{
-                background: scrolled ? 'transparent' : 'rgba(255,255,255,0.12)',
+                background: 'transparent',
                 borderRadius: 10,
                 padding: '4px 6px',
                 display: 'flex',
                 alignItems: 'center',
-                transition: 'background 0.4s',
               }}
             >
               <img
                 src={logo}
                 alt="Yousafzai EGRO"
                 style={{
-                  height: 48,
+                  height: 60,
                   width: 'auto',
                   flexShrink: 0,
                   display: 'block',
@@ -96,7 +95,7 @@ export default function Navbar() {
                 style={{
                   fontSize: 13.5,
                   fontWeight: 500,
-                  color: scrolled ? '#444C5C' : 'rgba(255,255,255,0.86)',
+                  color: '#444C5C',
                   position: 'relative',
                   padding: '6px 0',
                   transition: 'opacity 0.25s, color 0.4s',
@@ -161,7 +160,7 @@ export default function Navbar() {
                 width: 38,
                 height: 38,
                 borderRadius: 8,
-                border: `1px solid ${scrolled ? '#DBDFE6' : 'rgba(255,255,255,0.3)'}`,
+                border: '1px solid #DBDFE6',
                 background: 'transparent',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -171,12 +170,12 @@ export default function Navbar() {
               }}
             >
               {mobileOpen ? (
-                <X size={18} color={scrolled ? '#0B2545' : '#FFFFFF'} />
+                <X size={18} color="#0B2545" />
               ) : (
                 <>
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: '#0B2545', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: '#0B2545', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: '#0B2545', transition: '0.3s' }} />
                 </>
               )}
             </button>
@@ -223,7 +222,7 @@ export default function Navbar() {
         }
         @media (max-width: 420px) {
           .nav > div { padding-left: 16px !important; padding-right: 16px !important; }
-          .brand img { height: 36px !important; }
+          .brand img { height: 44px !important; }
           .btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
           .btn-sm span { gap: 4px !important; }
         }

@@ -17,7 +17,7 @@ export default function EggTradersFooter() {
           <div>
             <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18, textDecoration: 'none' }}>
             <div style={{ borderRadius: 10, padding: '4px 6px', display: 'flex', alignItems: 'center' }}>
-              <img src={logo} alt="Yousafzai EGRO" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 60, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
                 <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, color: '#FFFFFF' }}>Egg Traders</span>
