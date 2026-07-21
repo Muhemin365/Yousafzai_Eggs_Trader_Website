@@ -31,10 +31,10 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
           padding: 0,
           overflow: 'hidden',
-          background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-          boxShadow: scrolled ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
+          background: 'transparent',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: 'none',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
@@ -44,10 +44,10 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
               <img src={logo} alt="Yousafzai EGRO" style={{ height: 100, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: scrolled ? etTheme.navy : '#FFFFFF' }}>
+              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: '#FFFFFF' }}>
                 Egg Traders
               </span>
-              <span style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: scrolled ? etTheme['gold-dk'] : etTheme['gold-lt'], fontWeight: 600 }}>
+              <span style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: etTheme['gold-lt'], fontWeight: 600 }}>
                 Poultry Marketplace
               </span>
             </div>
@@ -61,7 +61,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
                 className={`et-nav-link ${isActive(link.path) ? 'active' : ''}`}
                 style={{
                   fontSize: 13.5, fontWeight: 500,
-                  color: scrolled ? '#444C5C' : '#FFFFFF',
+                  color: '#FFFFFF',
                   position: 'relative', padding: '6px 0',
                   transition: 'opacity 0.25s, color 0.4s', textDecoration: 'none',
                 }}
@@ -95,8 +95,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: 12.5,
               padding: '9px 16px', borderRadius: 8,
-              border: `1.5px solid ${scrolled ? etTheme.navy : 'rgba(255,255,255,0.5)'}`,
-              background: 'transparent', color: scrolled ? etTheme.navy : '#FFFFFF',
+              border: '1.5px solid rgba(255,255,255,0.5)',
+              background: 'transparent', color: '#FFFFFF',
               cursor: 'pointer', textDecoration: 'none', whiteSpace: 'nowrap',
             }}>
               Main Site
@@ -174,9 +174,6 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           border-radius: 2px;
           transition: all .3s cubic-bezier(.22,1,.36,1);
           transform-origin: center;
-        }
-        .et-nav.scrolled .et-menu-toggle span {
-          background: ${etTheme.navy};
         }
         .et-menu-toggle.open span:nth-child(1) {
           transform: translateY(7px) rotate(45deg);

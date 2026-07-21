@@ -39,10 +39,10 @@ export default function Navbar() {
           zIndex: 500,
           padding: 0,
           overflow: 'hidden',
-          background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-          boxShadow: scrolled ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
+          background: 'transparent',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: 'none',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
@@ -94,7 +94,7 @@ export default function Navbar() {
                 style={{
                   fontSize: 13.5,
                   fontWeight: 500,
-                  color: scrolled ? '#444C5C' : '#FFFFFF',
+                  color: '#FFFFFF',
                   position: 'relative',
           padding: 0,
                   transition: 'opacity 0.25s, color 0.4s',
@@ -159,7 +159,7 @@ export default function Navbar() {
                 width: 38,
                 height: 38,
                 borderRadius: 8,
-                border: `1px solid ${scrolled ? '#DBDFE6' : 'rgba(255,255,255,0.35)'}`,
+                border: '1px solid rgba(255,255,255,0.35)',
                 background: 'transparent',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -169,12 +169,12 @@ export default function Navbar() {
               }}
             >
               {mobileOpen ? (
-                <X size={18} color={scrolled ? '#0B2545' : '#FFFFFF'} />
+                <X size={18} color="#FFFFFF" />
               ) : (
                 <>
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
-                  <span style={{ width: 18, height: 1.6, background: scrolled ? '#0B2545' : '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: '#FFFFFF', transition: '0.3s' }} />
+                  <span style={{ width: 18, height: 1.6, background: '#FFFFFF', transition: '0.3s' }} />
                 </>
               )}
             </button>
