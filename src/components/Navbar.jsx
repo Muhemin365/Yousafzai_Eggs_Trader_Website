@@ -37,7 +37,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 500,
-          padding: '8px 0',
+          padding: '6px 0',
           background: 'rgba(240,248,255,0.92)',
           backdropFilter: 'blur(16px) saturate(160%)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
@@ -67,7 +67,7 @@ export default function Navbar() {
                 src={logo}
                 alt="Yousafzai EGRO"
                 style={{
-                  height: 36,
+                  height: 48,
                   width: 'auto',
                   flexShrink: 0,
                   display: 'block',
@@ -230,7 +230,7 @@ export default function Navbar() {
         }
         @media (max-width: 420px) {
           .nav > div { padding-left: 16px !important; padding-right: 16px !important; }
-          .brand img { height: 32px !important; }
+          .brand img { height: 40px !important; }
           .btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
           .btn-sm span { gap: 4px !important; }
         }

@@ -29,7 +29,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
       <nav className="et-nav"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
-          padding: '8px 0',
+          padding: '6px 0',
           background: 'rgba(240,248,255,0.92)',
           backdropFilter: 'blur(16px) saturate(160%)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
@@ -38,7 +38,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div style={{ background: 'transparent', borderRadius: 10, padding: '4px 6px', display: 'flex', alignItems: 'center', transition: 'background 0.4s' }}>
-              <img src={logo} alt="Yousafzai EGRO" style={{ height: 36, width: 'auto', flexShrink: 0, display: 'block' }} />
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 48, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: etTheme.navy }}>
@@ -222,7 +222,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         }
         @media (max-width: 420px) {
           nav > div { padding-left: 16px !important; padding-right: 16px !important; }
-          nav > div > a:nth-child(1) img { height: 32px !important; }
+          nav > div > a:nth-child(1) img { height: 40px !important; }
           .et-btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
           .et-btn-sm span { gap: 4px !important; }
           .et-mobile-panel { padding: 64px 20px 20px; width: 100%; max-width: 100%; }
