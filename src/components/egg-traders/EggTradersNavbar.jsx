@@ -2,13 +2,13 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 const etTheme = {
-  navy: '#0B2545',
-  'navy-2': '#173E72',
-  'navy-deep': '#071A30',
-  'navy-glow': 'rgba(200,162,74,0.35)',
-  gold: '#C8A24A',
-  'gold-lt': '#F1E4C3',
-  'gold-dk': '#9C7B2E',
+  navy: '#064E3B',
+  'navy-2': '#0D6B3D',
+  'navy-deep': '#022C22',
+  'navy-glow': 'rgba(5,150,105,0.35)',
+  gold: '#10B981',
+  'gold-lt': '#A7F3D0',
+  'gold-dk': '#059669',
 };
 
 const navLinks = [
@@ -31,7 +31,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
           padding: 0,
           overflow: 'hidden',
-          background: '#0B2545',
+          background: '#064E3B',
           boxShadow: '0 1px 0 rgba(255,255,255,0.06)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
@@ -40,14 +40,6 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src={logo} alt="Yousafzai EGRO" style={{ height: 100, width: 'auto', flexShrink: 0, display: 'block' }} />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: '#FFFFFF' }}>
-                Egg Traders
-              </span>
-              <span style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: etTheme['gold-lt'], fontWeight: 600 }}>
-                Poultry Marketplace
-              </span>
             </div>
           </Link>
 
@@ -81,8 +73,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
               fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: 13,
               padding: '10px 20px', borderRadius: 9, border: 'none', cursor: 'pointer',
               position: 'relative', overflow: 'hidden', whiteSpace: 'nowrap',
-              background: 'linear-gradient(120deg,#9C7B2E,#C8A24A 55%,#F1E4C3)',
-              color: '#071A30', boxShadow: '0 10px 24px rgba(200,162,74,0.35)',
+              background: 'linear-gradient(120deg,#059669,#10B981 55%,#A7F3D0)',
+              color: '#022C22', boxShadow: '0 10px 24px rgba(5,150,105,0.35)',
               textDecoration: 'none',
             }}>
               <span style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -115,10 +107,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         onClick={() => setMobileOpen(false)}
       />
       <div className={`et-mobile-panel ${mobileOpen ? 'open' : ''}`}>
-        <div style={{ marginBottom: 40 }}>
-          <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 18, color: '#FFFFFF' }}>Egg Traders</span>
-          <span style={{ display: 'block', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: etTheme['gold-lt'], fontWeight: 600, marginTop: 4 }}>Poultry Marketplace</span>
-        </div>
+        <div style={{ height: 20 }} />
         {navLinks.map((link) => (
           <Link key={link.path} to={link.path} onClick={() => setMobileOpen(false)}
             style={{
@@ -151,7 +140,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           left: 0;
           right: 0;
           height: 1.5px;
-          background: linear-gradient(90deg, #C8A24A 0%, #9C7B2E 25%, #5A7B9C 60%, rgba(11,37,69,0.06) 85%, transparent 100%);
+          background: linear-gradient(90deg, #10B981 0%, #059669 25%, #064E3B 60%, rgba(6,78,59,0.06) 85%, transparent 100%);
         }
         .et-nav-links { display: flex !important; }
         .et-mainsite-link { display: inline-flex !important; }
@@ -215,9 +204,6 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           .et-menu-toggle { display: flex !important; }
         }
         @media (max-width: 640px) {
-          nav > div > a:nth-child(1) span:first-child { font-size: 13px !important; }
-          nav > div > a:nth-child(1) span:last-child { display: none !important; }
-          nav > div > a:nth-child(1) { gap: 8px !important; }
           .et-mainsite-link { display: none !important; }
           .et-mobile-panel { padding: 72px 24px 24px; }
         }
