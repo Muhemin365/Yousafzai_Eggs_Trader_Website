@@ -39,10 +39,8 @@ export default function Navbar() {
           zIndex: 500,
           padding: 0,
           overflow: 'hidden',
-          background: 'transparent',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: 'none',
+          background: '#0B2545',
+          boxShadow: '0 1px 0 rgba(255,255,255,0.06)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
