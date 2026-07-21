@@ -13,7 +13,7 @@ export default function FooterSection() {
           <div className="footer-brand">
             <Link to="/" className="brand" style={{ textDecoration: 'none' }}>
               <div className="brand-mark">
-                <img src={logo} alt="Yousafzai EGRO" style={{ height: 60, width: 'auto', display: 'block' }} />
+                <img src={logo} alt="Yousafzai EGRO" style={{ height: 36, width: 'auto', display: 'block' }} />
               </div>
             </Link>
             <p className="footer-desc">{company.tagline}</p>
