@@ -31,15 +31,16 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
           padding: 0,
           overflow: 'hidden',
-          background: 'rgba(240,248,255,0.92)',
-          backdropFilter: 'blur(16px) saturate(160%)',
+          background: 'rgba(240,248,255,0.85)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
           transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link to="/egg-traders" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <div style={{ background: 'transparent', display: 'flex', alignItems: 'center' }}>
-              <img src={logo} alt="Yousafzai EGRO" style={{ height: 64, width: 'auto', flexShrink: 0, display: 'block' }} />
+              <img src={logo} alt="Yousafzai EGRO" style={{ height: 100, width: 'auto', flexShrink: 0, display: 'block' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: '0.02em', color: etTheme.navy }}>
@@ -150,8 +151,8 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
           bottom: 0;
           left: 0;
           right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #F59E0B 0%, #D97706 30%, rgba(13,107,61,0.08) 70%, transparent 100%);
+          height: 1.5px;
+          background: linear-gradient(90deg, #F59E0B 0%, #D97706 25%, #5A8A7B 60%, rgba(13,107,61,0.06) 85%, transparent 100%);
         }
         .et-nav-links { display: flex !important; }
         .et-mainsite-link { display: inline-flex !important; }
@@ -223,7 +224,7 @@ export default function EggTradersNavbar({ scrolled, mobileOpen, setMobileOpen }
         }
         @media (max-width: 420px) {
           nav > div { padding-left: 16px !important; padding-right: 16px !important; }
-          nav > div > a:nth-child(1) img { height: 48px !important; }
+          nav > div > a:nth-child(1) img { height: 72px !important; }
           .et-btn-sm { padding: 8px 14px !important; font-size: 11.5px !important; }
           .et-btn-sm span { gap: 4px !important; }
           .et-mobile-panel { padding: 64px 20px 20px; width: 100%; max-width: 100%; }
